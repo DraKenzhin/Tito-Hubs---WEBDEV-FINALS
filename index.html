@@ -1,112 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tito Hobs - Gunpla Store</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-        }
+<meta charset="UTF-8">
+<title>Tito Hobs - Gunpla Store</title>
 
-        header {
-            background: #111;
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+<!-- Futuristic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-        header h1 {
-            margin: 0;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: #0a0f1c;
+    color: #fff;
+}
 
-        nav {
-            background: #222;
-            padding: 10px;
-        }
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    align-items: center;
+    border-bottom: 2px solid cyan;
+}
 
-        nav a {
-            color: white;
-            margin: 10px;
-            text-decoration: none;
-        }
+header h1 {
+    color: cyan;
+    text-shadow: 0 0 10px cyan;
+}
 
-        nav a:hover {
-            color: #00bcd4;
-        }
+header input {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
 
-        .hero {
-            background: url('https://via.placeholder.com/1200x400') center/cover;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
+/* NAV */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background: #111;
+    padding: 15px;
+}
 
-        .hero h2 {
-            font-size: 40px;
-        }
+/* HARO ARROW BUTTON */
+.nav-btn {
+    position: relative;
+    padding: 10px 20px;
+    color: cyan;
+    text-decoration: none;
+    border: 2px solid cyan;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    transition: 0.3s;
+}
 
-        .section {
-            padding: 30px;
-        }
+.nav-btn:hover {
+    background: cyan;
+    color: black;
+    box-shadow: 0 0 15px cyan;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-        }
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: radial-gradient(circle, #1c1f2b, #05070d);
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
+.hero h2 {
+    font-size: 45px;
+    color: cyan;
+    text-shadow: 0 0 20px cyan;
+}
 
-        .card img {
-            width: 100%;
-        }
+/* SECTION */
+.section {
+    padding: 40px;
+}
 
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: #111827;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid cyan;
+    border-radius: 10px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px cyan;
+}
+
+/* GLOW BORDER EFFECT */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: linear-gradient(45deg, cyan, transparent) border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+}
+
+/* FOOTER */
+footer {
+    background: #000;
+    text-align: center;
+    padding: 15px;
+    border-top: 2px solid cyan;
+}
+</style>
 </head>
 
 <body>
 
 <header>
     <h1>TITO HOBS</h1>
-    <div>
-        <input type="text" placeholder="Search Gunpla...">
-    </div>
+    <input type="text" placeholder="Search Gunpla...">
 </header>
 
-<!-- MAIN NAVIGATION -->
+<!-- NAVIGATION -->
 <nav>
-    <a href="#">Home</a>
-    <a href="#">Shop</a>
-    <a href="#">Grades</a>
-    <a href="#">Timelines</a>
-    <a href="#">About</a>
+    <a class="nav-btn" href="#">Home</a>
+    <a class="nav-btn" href="#">Shop</a>
+    <a class="nav-btn" href="#">Grades</a>
+    <a class="nav-btn" href="#">Timelines</a>
+    <a class="nav-btn" href="#">About</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-    <h2>Build Your Dream Gunpla</h2>
-    <p>From Entry Grade to Perfect Grade</p>
+    <h2>BUILD YOUR MECHA</h2>
+    <p>From EG to PG — Master Every Timeline</p>
 </div>
 
-<!-- GRADE SECTION -->
+<!-- GRADES -->
 <div class="section">
-    <h2>Shop by Grade</h2>
+    <h2>⚙️ Gunpla Grades</h2>
     <div class="grid">
         <div class="card">EG</div>
         <div class="card">HG</div>
@@ -117,9 +163,9 @@
     </div>
 </div>
 
-<!-- TIMELINE SECTION -->
+<!-- TIMELINES -->
 <div class="section">
-    <h2>Shop by Timeline</h2>
+    <h2>🧭 Gundam Timelines</h2>
     <div class="grid">
         <div class="card">Universal Century</div>
         <div class="card">Cosmic Era</div>
@@ -131,22 +177,17 @@
 
 <!-- PRODUCTS -->
 <div class="section">
-    <h2>Featured Gunpla</h2>
+    <h2>🔥 Featured Units</h2>
     <div class="grid">
         <div class="card">
-            <img src="https://via.placeholder.com/150">
-            <p>HG RX-78-2 Gundam</p>
+            <p>HG RX-78-2</p>
             <p>₱1,200</p>
         </div>
-
         <div class="card">
-            <img src="https://via.placeholder.com/150">
             <p>MG Barbatos</p>
             <p>₱3,000</p>
         </div>
-
         <div class="card">
-            <img src="https://via.placeholder.com/150">
             <p>RG Strike Freedom</p>
             <p>₱2,500</p>
         </div>
@@ -154,7 +195,7 @@
 </div>
 
 <footer>
-    <p>© 2026 Tito Hobs Gunpla Store</p>
+    <p>© 2026 Tito Hobs - Mecha Division</p>
 </footer>
 
 </body>
