@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tito-Hobs | Gunpla Store</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
 /* RESET */
 * {
@@ -16,8 +18,54 @@
 
 /* BODY */
 body {
-    background: #0a0a0f;
+    background: radial-gradient(circle at top, #0f0f1a, #000);
     color: #fff;
+    overflow-x: hidden;
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, #0a0a0f, #111827);
+    border-right: 2px solid #ff2e2e;
+    box-shadow: 5px 0 20px #ff2e2e22;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    color: #ff2e2e;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #ff2e2e55;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #ccc;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #ff2e2e;
+    border-left: 3px solid #ff2e2e;
+    background: rgba(255,46,46,0.1);
+    transform: translateX(5px);
+}
+
+/* MAIN */
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
 }
 
 /* HEADER */
@@ -26,21 +74,26 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 15px 40px;
-    background: linear-gradient(90deg, #111, #1a1a2e);
+    background: linear-gradient(90deg, #0a0a0f, #1a1a2e);
     border-bottom: 2px solid #ff2e2e;
+    box-shadow: 0 0 15px #ff2e2e33;
 }
 
+/* LOGO */
 .logo {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .logo img {
-    height: 60px;
+    height: 55px;
+    filter: drop-shadow(0 0 8px #ff2e2e);
 }
 
+/* NAV */
 nav a {
-    margin: 0 15px;
+    margin: 0 12px;
     text-decoration: none;
     color: #ccc;
     transition: 0.3s;
@@ -48,18 +101,21 @@ nav a {
 
 nav a:hover {
     color: #ff2e2e;
+    text-shadow: 0 0 10px #ff2e2e;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 90px 20px;
     background: radial-gradient(circle, #1f1f2e, #000);
+    border-bottom: 1px solid #222;
 }
 
 .hero h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     color: #ff2e2e;
+    text-shadow: 0 0 20px #ff2e2e;
 }
 
 .hero p {
@@ -69,7 +125,13 @@ nav a:hover {
 
 /* SECTION */
 section {
-    padding: 40px;
+    padding: 50px;
+}
+
+h2 {
+    color: #ff2e2e;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff2e2e33;
 }
 
 /* GRID */
@@ -81,16 +143,18 @@ section {
 
 /* CARD */
 .card {
-    background: #141421;
+    background: rgba(20, 20, 33, 0.8);
     border: 1px solid #333;
     padding: 20px;
     text-align: center;
     transition: 0.3s;
+    backdrop-filter: blur(5px);
 }
 
 .card:hover {
     border-color: #ff2e2e;
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 0 15px #ff2e2e33;
 }
 
 .card h3 {
@@ -114,6 +178,7 @@ section {
 
 .timeline div:hover {
     background: #ff2e2e;
+    color: #000;
 }
 
 /* FOOTER */
@@ -123,23 +188,44 @@ footer {
     background: #111;
     border-top: 2px solid #ff2e2e;
     margin-top: 40px;
+    color: #888;
 }
 
 /* RESPONSIVE */
 @media(max-width: 768px) {
-    header {
-        flex-direction: column;
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    .main {
+        margin-left: 0;
+        width: 100%;
     }
 }
 </style>
 
 </head>
+
 <body>
 
-<header>
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>⚙ TITO-HOBS</h2>
+    <a href="#grades">Gunpla Grades</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#shop">Shop</a>
+    <a href="#top">Return to Top</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<header id="top">
     <div class="logo">
         <img src="logo.png" alt="Tito-Hobs Logo">
     </div>
+
     <nav>
         <a href="#shop">Shop</a>
         <a href="#grades">Grades</a>
@@ -149,7 +235,7 @@ footer {
 
 <section class="hero">
     <h1>TITO-HOBS</h1>
-    <p>Your One-Stop Gunpla Hobby Shop</p>
+    <p>Your One-Stop Gunpla Hobby Universe</p>
 </section>
 
 <section id="grades">
@@ -188,6 +274,8 @@ footer {
 <footer>
     <p>© 2026 Tito-Hobs | Built for Gunpla Builders</p>
 </footer>
+
+</div>
 
 </body>
 </html>
