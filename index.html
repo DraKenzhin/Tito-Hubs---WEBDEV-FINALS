@@ -2,161 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tito-Hubs Gunpla Store</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #0f172a;
-            color: white;
-        }
-
-        header {
-            background-color: #020617;
-            padding: 15px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            color: #38bdf8;
-        }
-
-        nav {
-            background-color: #1e293b;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #38bdf8;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(to right, #0f172a, #1e293b);
-        }
-
-        .hero h2 {
-            font-size: 2.5em;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .card {
-            background-color: #1e293b;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .card h3 {
-            margin: 10px 0;
-        }
-
-        .card button {
-            background-color: #38bdf8;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            color: black;
-            font-weight: bold;
-        }
-
-        .card button:hover {
-            background-color: #0ea5e9;
-        }
-
-        footer {
-            background-color: #020617;
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tito-Hobs - Your Gunpla Destination</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>Tito-Hobs</h1>
+            <p>Premium Gunpla Models for Every Fan</p>
+        </div>
+    </header>
 
-<header>
-    <h1>Tito-Hubs</h1>
-    <p>Your Ultimate Gunpla Hub</p>
-</header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#products">All Products</a></li>
+                <li><a href="#grades">Grades</a></li>
+                <li><a href="#timelines">Timelines</a></li>
+                <li><a href="#factions">Factions</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Shop</a>
-    <a href="#">Categories</a>
-    <a href="#">Contact</a>
-</nav>
+    <main class="container">
+        <section id="products">
+            <h2>Featured Gunpla</h2>
+            <div class="product-grid">
+                <!-- Example Product - You'll add more here -->
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/200" alt="HG RX-78-2 Gundam">
+                    <h3>HG RX-78-2 Gundam</h3>
+                    <p>Grade: HG (High Grade)</p>
+                    <p>Timeline: Universal Century</p>
+                    <p class="price">$25.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/200" alt="MG Freedom Gundam 2.0">
+                    <h3>MG Freedom Gundam 2.0</h3>
+                    <p>Grade: MG (Master Grade)</p>
+                    <p>Timeline: Cosmic Era</p>
+                    <p class="price">$60.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/200" alt="RG Zaku II">
+                    <h3>RG Zaku II</h3>
+                    <p>Grade: RG (Real Grade)</p>
+                    <p>Timeline: Universal Century</p>
+                    <p class="price">$35.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <!-- Add more product items here -->
+            </div>
+        </section>
 
-<section class="hero">
-    <h2>Build Your Gundam Legacy</h2>
-    <p>Shop Entry Grade, HG, RG, MG, and PG Gunpla Kits</p>
-</section>
+        <section id="grades">
+            <h2>Gunpla Grades Explained</h2>
+            <div class="info-section">
+                <p><strong>HG (High Grade):</strong> Excellent detail and articulation for their size, a great starting point.</p>
+                <p><strong>EG (Entry Grade):</strong> Simple to build, perfect for beginners and younger builders.</p>
+                <p><strong>MG (Master Grade):</strong> Highly detailed, complex inner frame, and impressive articulation. For the enthusiast.</p>
+                <p><strong>PG (Perfect Grade):</strong> The pinnacle of Gunpla, with intricate detail, complex engineering, and often LED compatibility.</p>
+                <p><strong>RG (Real Grade):</strong> Focuses on realism with pre-molded inner frames and advanced articulation, offering a mid-range complexity with high detail.</p>
+            </div>
+        </section>
 
-<section class="products">
+        <section id="timelines">
+            <h2>Key Gunpla Timelines</h2>
+            <div class="info-section">
+                <p><strong>Universal Century (UC):</strong> The original and most extensive timeline, featuring iconic mobile suits like the RX-78-2 Gundam and Zaku II.</p>
+                <p><strong>Cosmic Era (CE):</strong> Known for its dramatic storytelling and mobile suits like the Freedom Gundam and Strike Gundam.</p>
+                <!-- Add more timelines as needed -->
+            </div>
+        </section>
 
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="EG Gundam">
-        <h3>Entry Grade RX-78-2</h3>
-        <p>₱600</p>
-        <button>Add to Cart</button>
-    </div>
+        <section id="factions">
+            <h2>Popular Factions</h2>
+            <div class="info-section">
+                <p><strong>Earth Federation:</strong> The primary human government in the Universal Century, often fielding advanced mobile suits.</p>
+                <p><strong>Principality of Zeon:</strong> The main antagonist faction in the early Universal Century, famous for its distinctive mobile suits like the Zaku.</p>
+                <p><strong>ZAFT (Zodiac Alliance of Freedom Treaty):</strong> A prominent faction in the Cosmic Era, known for its advanced mobile suit technology.</p>
+                <!-- Add more factions as needed -->
+            </div>
+        </section>
+    </main>
 
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="HG Gundam">
-        <h3>HG Gundam Aerial</h3>
-        <p>₱1,200</p>
-        <button>Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="RG Gundam">
-        <h3>RG Nu Gundam</h3>
-        <p>₱2,500</p>
-        <button>Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="MG Gundam">
-        <h3>MG Gundam Vidar</h3>
-        <p>₱4,500</p>
-        <button>Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="PG Gundam">
-        <h3>PG Unicorn Gundam</h3>
-        <p>₱20,000</p>
-        <button>Add to Cart</button>
-    </div>
-
-</section>
-
-<footer>
-    <p>© 2026 Tito-Hubs | Gunpla Store</p>
-</footer>
-
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Tito-Hobs. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
