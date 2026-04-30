@@ -2,578 +2,160 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tito-Hobs - Gunpla Store</title>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Tito Hobs - Gunpla Store</title>
     <style>
-        /* --------------------------
-        General Styles
-        -------------------------- */
-        :root {
-            --primary-color: #165DFF;
-            --secondary-color: #36CFC9;
-            --dark-color: #1E293B;
-            --light-color: #F8FAFC;
-            --gray-color: #64748B;
-            --light-gray: #F1F5F9;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
         body {
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: var(--light-color);
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--dark-color);
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--gray-color);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
+        header {
+            background: #111;
             color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #0F48C3;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(22, 93, 255, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: var(--dark-color);
-            border: 1px solid #E2E8F0;
-        }
-
-        .btn-secondary:hover {
-            background-color: #F8FAFC;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        /* --------------------------
-        Navigation
-        -------------------------- */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            z-index: 100;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark-color);
-        }
-
-        .logo i {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 35px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--dark-color);
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 20px;
-            font-size: 1.2rem;
-        }
-
-        .nav-icons a {
-            color: var(--dark-color);
-            transition: color 0.3s ease;
-        }
-
-        .nav-icons a:hover {
-            color: var(--primary-color);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* --------------------------
-        Hero Section
-        -------------------------- */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: 100px;
-            background: linear-gradient(135deg, rgba(22, 93, 255, 0.1) 0%, rgba(54, 207, 201, 0.1) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before, .hero::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-        }
-
-        .hero::before {
-            width: 300px;
-            height: 300px;
-            background-color: var(--primary-color);
-            top: 10%;
-            right: -100px;
-        }
-
-        .hero::after {
-            width: 250px;
-            height: 250px;
-            background-color: var(--secondary-color);
-            bottom: 10%;
-            left: -80px;
-        }
-
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 25px;
-            color: var(--dark-color);
-        }
-
-        .hero-content h1 span {
-            color: var(--primary-color);
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: var(--gray-color);
-            margin-bottom: 35px;
-            max-width: 500px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            transform: rotate(1deg);
-            transition: transform 0.5s ease;
-        }
-
-        .hero-image:hover img {
-            transform: rotate(0);
-        }
-
-        .hero-badge {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background-color: white;
             padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .hero-badge h4 {
-            font-size: 1rem;
-            margin-bottom: 3px;
-            color: var(--dark-color);
+        header h1 {
+            margin: 0;
         }
 
-        .hero-badge p {
-            font-size: 0.85rem;
-            color: var(--gray-color);
+        nav {
+            background: #222;
+            padding: 10px;
         }
 
-        /* --------------------------
-        Categories Section
-        -------------------------- */
-        .categories {
-            background-color: white;
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
         }
 
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
+        nav a:hover {
+            color: #00bcd4;
         }
 
-        .category-card {
-            background-color: var(--light-color);
-            border-radius: 12px;
-            padding: 30px 20px;
+        .hero {
+            background: url('https://via.placeholder.com/1200x400') center/cover;
+            color: white;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #E2E8F0;
+            padding: 80px 20px;
         }
 
-        .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary-color);
+        .hero h2 {
+            font-size: 40px;
         }
 
-        .category-icon {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(22, 93, 255, 0.1);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 20px;
-        }
-
-        .category-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-            color: var(--dark-color);
-        }
-
-        .category-card h4 {
-            font-size: 1rem;
-            color: var(--gray-color);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .category-card p {
-            font-size: 0.9rem;
-            color: var(--gray-color);
-            margin-bottom: 20px;
-        }
-
-        .category-link {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: gap 0.3s ease;
-        }
-
-        .category-link:hover {
-            gap: 8px;
-        }
-
-        /* --------------------------
-        Products Section
-        -------------------------- */
-        .products {
-            background-color: var(--light-gray);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            position: relative;
-            overflow: hidden;
-            height: 250px;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-grade {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 20px;
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark-color);
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .product-description {
-            font-size: 0.9rem;
-            color: var(--gray-color);
-            margin-bottom: 15px;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-rating {
-            color: #FFC107;
-            font-size: 0.9rem;
-        }
-
-        /* --------------------------
-        About Section
-        -------------------------- */
-        .about {
-            background-color: white;
-        }
-
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-image img {
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-content h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--dark-color);
-        }
-
-        .about-content p {
-            margin-bottom: 15px;
-            color: var(--gray-color);
-            font-size: 1.05rem;
-        }
-
-        /* --------------------------
-        Contact Section
-        -------------------------- */
-        .contact {
-            background-color: var(--light-gray);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--dark-color);
-        }
-
-        .contact-info p {
-            margin-bottom: 30px;
-            color: var(--gray-color);
-            font-size: 1.05rem;
-        }
-
-        .contact-details {
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            color: var(--gray-color);
-        }
-
-        .contact-item i {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(22, 93, 255, 0.1);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            color: var(--dark-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .contact-form {
-            background-color: white;
+        .section {
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>TITO HOBS</h1>
+    <div>
+        <input type="text" placeholder="Search Gunpla...">
+    </div>
+</header>
+
+<!-- MAIN NAVIGATION -->
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Shop</a>
+    <a href="#">Grades</a>
+    <a href="#">Timelines</a>
+    <a href="#">About</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Build Your Dream Gunpla</h2>
+    <p>From Entry Grade to Perfect Grade</p>
+</div>
+
+<!-- GRADE SECTION -->
+<div class="section">
+    <h2>Shop by Grade</h2>
+    <div class="grid">
+        <div class="card">EG</div>
+        <div class="card">HG</div>
+        <div class="card">RG</div>
+        <div class="card">MG</div>
+        <div class="card">FM</div>
+        <div class="card">PG</div>
+    </div>
+</div>
+
+<!-- TIMELINE SECTION -->
+<div class="section">
+    <h2>Shop by Timeline</h2>
+    <div class="grid">
+        <div class="card">Universal Century</div>
+        <div class="card">Cosmic Era</div>
+        <div class="card">Anno Domini</div>
+        <div class="card">Post Disaster</div>
+        <div class="card">Future Century</div>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section">
+    <h2>Featured Gunpla</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <p>HG RX-78-2 Gundam</p>
+            <p>₱1,200</p>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <p>MG Barbatos</p>
+            <p>₱3,000</p>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <p>RG Strike Freedom</p>
+            <p>₱2,500</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Tito Hobs Gunpla Store</p>
+</footer>
+
+</body>
+</html>
