@@ -2,201 +2,306 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tito Hobs - Gunpla Store</title>
-
-<!-- Futuristic Font -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tito-Hobs | Gunpla Store</title>
 
 <style>
-body {
+/* RESET */
+* {
     margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: #0a0f1c;
-    color: #fff;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-/* HEADER */
-header {
-    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+/* NAVBAR */
+.navbar {
     display: flex;
     justify-content: space-between;
-    padding: 15px 30px;
     align-items: center;
-    border-bottom: 2px solid cyan;
-}
-
-header h1 {
-    color: cyan;
-    text-shadow: 0 0 10px cyan;
-}
-
-header input {
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-}
-
-/* NAV */
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
     background: #111;
-    padding: 15px;
-}
-
-/* HARO ARROW BUTTON */
-.nav-btn {
-    position: relative;
     padding: 10px 20px;
-    color: cyan;
-    text-decoration: none;
-    border: 2px solid cyan;
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
-    transition: 0.3s;
+    color: white;
 }
 
-.nav-btn:hover {
-    background: cyan;
-    color: black;
-    box-shadow: 0 0 15px cyan;
+.logo img {
+    height: 60px;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: red;
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
 }
 
 /* HERO */
 .hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: radial-gradient(circle, #1c1f2b, #05070d);
+    height: 80vh;
+    background: linear-gradient(#111,#333);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.hero h2 {
-    font-size: 45px;
-    color: cyan;
-    text-shadow: 0 0 20px cyan;
+.hero h1 {
+    font-size: 48px;
 }
 
-/* SECTION */
-.section {
+.hero p {
+    margin: 10px 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* CATEGORIES */
+.categories {
     padding: 40px;
-}
-
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 20px;
-}
-
-/* CARD */
-.card {
-    background: #111827;
-    padding: 20px;
     text-align: center;
-    border: 1px solid cyan;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    padding: 20px;
+    background: #eee;
     border-radius: 10px;
+}
+
+/* PRODUCTS */
+.products {
+    padding: 40px;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.product-card img {
+    width: 100%;
+}
+
+.product-card button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* CART */
+.cart-panel {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: white;
+    padding: 20px;
     transition: 0.3s;
-    position: relative;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px cyan;
-}
-
-/* GLOW BORDER EFFECT */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    background: linear-gradient(45deg, cyan, transparent) border-box;
-    -webkit-mask:
-        linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
+.cart-panel.active {
+    right: 0;
 }
 
 /* FOOTER */
 footer {
-    background: #000;
+    background: #111;
+    color: white;
     text-align: center;
     padding: 15px;
-    border-top: 2px solid cyan;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav {
+        display: none;
+    }
+
+    nav.active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        background: #111;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<header>
-    <h1>TITO HOBS</h1>
-    <input type="text" placeholder="Search Gunpla...">
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <a href="#">
+            <img src="images/logo.png" alt="Tito-Hobs Logo">
+        </a>
+    </div>
+
+    <nav id="navMenu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#categories">Categories</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        <span id="cart-count">0</span> 🛒
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <button onclick="toggleCart()">Cart</button>
+    </div>
 </header>
 
-<!-- NAVIGATION -->
-<nav>
-    <a class="nav-btn" href="#">Home</a>
-    <a class="nav-btn" href="#">Shop</a>
-    <a class="nav-btn" href="#">Grades</a>
-    <a class="nav-btn" href="#">Timelines</a>
-    <a class="nav-btn" href="#">About</a>
-</nav>
-
 <!-- HERO -->
-<div class="hero">
-    <h2>BUILD YOUR MECHA</h2>
-    <p>From EG to PG — Master Every Timeline</p>
-</div>
+<section class="hero">
+    <h1>Tito-Hobs</h1>
+    <p>Your One-Stop Gunpla Hobby Shop</p>
+    <a href="#products" class="btn">Shop Now</a>
+</section>
 
-<!-- GRADES -->
-<div class="section">
-    <h2>⚙️ Gunpla Grades</h2>
-    <div class="grid">
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+    <h2>Shop by Grade</h2>
+    <div class="category-grid">
         <div class="card">EG</div>
         <div class="card">HG</div>
         <div class="card">RG</div>
         <div class="card">MG</div>
-        <div class="card">FM</div>
         <div class="card">PG</div>
     </div>
-</div>
-
-<!-- TIMELINES -->
-<div class="section">
-    <h2>🧭 Gundam Timelines</h2>
-    <div class="grid">
-        <div class="card">Universal Century</div>
-        <div class="card">Cosmic Era</div>
-        <div class="card">Anno Domini</div>
-        <div class="card">Post Disaster</div>
-        <div class="card">Future Century</div>
-    </div>
-</div>
+</section>
 
 <!-- PRODUCTS -->
-<div class="section">
-    <h2>🔥 Featured Units</h2>
-    <div class="grid">
-        <div class="card">
-            <p>HG RX-78-2</p>
-            <p>₱1,200</p>
+<section class="products" id="products">
+    <h2>Featured Kits</h2>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200">
+            <h3>HG RX-78-2</h3>
+            <p>₱800</p>
+            <button onclick="addToCart('HG RX-78-2',800)">Add to Cart</button>
         </div>
-        <div class="card">
-            <p>MG Barbatos</p>
-            <p>₱3,000</p>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200">
+            <h3>RG Unicorn</h3>
+            <p>₱1500</p>
+            <button onclick="addToCart('RG Unicorn',1500)">Add to Cart</button>
         </div>
-        <div class="card">
-            <p>RG Strike Freedom</p>
-            <p>₱2,500</p>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200">
+            <h3>MG Barbatos</h3>
+            <p>₱2500</p>
+            <button onclick="addToCart('MG Barbatos',2500)">Add to Cart</button>
         </div>
+
     </div>
+</section>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: ₱<span id="total">0</span></p>
+    <button onclick="toggleCart()">Close</button>
 </div>
 
+<!-- FOOTER -->
 <footer>
-    <p>© 2026 Tito Hobs - Mecha Division</p>
+    <p>© 2026 Tito-Hobs</p>
 </footer>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price){
+    cart.push({name, price});
+    total += price;
+    updateCart();
+}
+
+function updateCart(){
+    let list = document.getElementById("cart-items");
+    let totalDisplay = document.getElementById("total");
+    let count = document.getElementById("cart-count");
+
+    list.innerHTML = "";
+
+    cart.forEach(item => {
+        let li = document.createElement("li");
+        li.textContent = item.name + " - ₱" + item.price;
+        list.appendChild(li);
+    });
+
+    totalDisplay.textContent = total;
+    count.textContent = cart.length;
+}
+
+function toggleCart(){
+    document.getElementById("cartPanel").classList.toggle("active");
+}
+
+function toggleMenu(){
+    document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
