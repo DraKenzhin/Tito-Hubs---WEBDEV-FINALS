@@ -109,7 +109,7 @@ nav a:hover {
     position: relative;
     text-align: center;
     padding: 120px 20px;
-    background: url('https://images.unsplash.com/photo-1608889175119-3c5b2d3e3c63?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+   background: url('your-gundam-image.png') center/cover no-repeat;
     border-bottom: 1px solid #222;
 }
 
@@ -125,7 +125,14 @@ nav a:hover {
 }
 
 /* CONTENT ABOVE OVERLAY */
-.hero h1,
+.hero h1 {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff2e2e; }
+    to { text-shadow: 0 0 30px #ff2e2e, 0 0 50px #ff2e2e; }
+}
 .hero p {
     position: relative;
     z-index: 2;
