@@ -107,7 +107,7 @@ nav a:hover {
 /* HERO */
 .hero {
     position: relative;
-    height: 100vh;              /* FULL SCREEN HERO */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,75 +117,59 @@ nav a:hover {
     border-bottom: 1px solid #222;
 }
 
-/* BACKGROUND IMAGE LAYER */
+/* SLIDESHOW LAYERS */
+.hero::before,
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png') center/cover no-repeat;
-    filter: brightness(1.55) contrast(1.1);
-    transform: scale(1.08); /* cinematic zoom */
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.08);
     z-index: 0;
+    animation: fadeSlide 12s infinite;
 }
 
-/* DARK OVERLAY (LIGHTER FOR BRIGHTER FEEL) */
+/* SLIDE 1 */
 .hero::before {
-    content: "";
+    background-image: url('Gemini_Generated_Image_x3ryl5x3ryl5x3ry.png'); /* replace */
+    animation-delay: 0s;
+}
+
+/* SLIDE 2 */
+.hero::after {
+    background-image: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png'); /* your current image */
+    animation-delay: 6s;
+}
+
+/* DARK OVERLAY */
+.hero {
+    position: relative;
+}
+
+.hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.30);
     z-index: 1;
 }
 
-/* TEXT CONTENT */
+/* TEXT */
 .hero h1,
-.hero p {
+.hero p,
+.hero button {
     position: relative;
     z-index: 2;
 }
 
-/* TITLE */
-.hero h1 {
-    font-size: 5em;
-    color: #ff2e2e;
-    text-shadow: 0 0 25px #ff2e2e, 0 0 60px #ff2e2e;
-    margin: 0;
+/* ANIMATION */
+@keyframes fadeSlide {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    45% { opacity: 1; }
+    55% { opacity: 0; }
+    100% { opacity: 0; }
 }
-
-/* SUBTEXT */
-.hero p {
-    margin-top: 20px;
-    font-size: 1.4em;
-    color: #eee;
-}
-
-/* OPTIONAL BUTTON STYLE (if you add CTA later) */
-.hero button {
-    margin-top: 30px;
-    padding: 12px 25px;
-    font-size: 1em;
-    background: #ff2e2e;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 0 20px #ff2e2e;
-    transition: 0.3s;
-}
-
-.hero button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px #ff2e2e;
-}
-
-/* SECTION */
-section {
-    padding: 50px;
-}
-
-h2 {
-    color: #ff2e2e;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px #ff2e2e33;
 }
 
 /* GRID */
@@ -286,11 +270,13 @@ footer {
         <a href="#timeline">Timeline</a>
     </nav>
 </header>
+<div class="hero">
+    <div class="hero-overlay"></div>
 
-<section class="hero">
-    <h1></h1>
-    <p></p>
-</section>
+    <h1>TITO-HOBS</h1>
+    <p>Gunpla • Mecha • Model Kits Universe</p>
+    <button>ENTER SHOP</button>
+</div>
 
 <section id="grades">
     <h2>Gunpla Grades</h2>
