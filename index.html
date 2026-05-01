@@ -108,39 +108,42 @@ nav a:hover {
 .hero {
     position: relative;
     text-align: center;
-    padding: 120px 20px;
-   background: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png') center/cover no-repeat;
+    padding: 160px 20px; /* bigger hero height */
+    background: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png') center/cover no-repeat;
     border-bottom: 1px solid #222;
 }
 
-/* DARK OVERLAY */
+/* LIGHTER OVERLAY (less dark than before) */
 .hero::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.65);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* reduced darkness */
 }
 
-/* CONTENT ABOVE OVERLAY */
-.hero h1 {
+/* BRIGHTNESS BOOST */
+.hero {
+    filter: brightness(1.2) contrast(1.1);
 }
+
+/* TEXT ABOVE OVERLAY */
+.hero h1,
 .hero p {
     position: relative;
     z-index: 2;
 }
 
+/* STRONGER TEXT VISIBILITY */
 .hero h1 {
-    font-size: 3.5em;
+    font-size: 4em; /* bigger title */
     color: #ff2e2e;
-    text-shadow: 0 0 25px #ff2e2e;
+    text-shadow: 0 0 25px #ff2e2e, 0 0 50px #ff2e2e;
 }
 
 .hero p {
-    margin-top: 10px;
-    color: #ddd;
+    margin-top: 15px;
+    color: #eee;
+    font-size: 1.2em;
 }
 
 /* SECTION */
@@ -243,7 +246,7 @@ footer {
 
 <header id="top">
     <div class="logo">
-        <img src="Gemini_Generated_Image_62mttp62mttp62mt.png" alt="Tito-Hobs Logo">
+        <img src="ChatGPT Image May 1, 2026, 08_51_21 PM.png" alt="Tito-Hobs Logo">
     </div>
 
     <nav>
