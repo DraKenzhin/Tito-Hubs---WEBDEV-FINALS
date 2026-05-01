@@ -105,48 +105,48 @@ nav a:hover {
 }
 
 /* HERO */
+/* HERO */
 .hero {
     position: relative;
     height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid #222;
 }
 
-/* SLIDESHOW LAYERS */
-.hero::before,
-.hero::after {
-    content: "";
+/* ALL SLIDES */
+.slide {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
     transform: scale(1.08);
-    z-index: 0;
-    animation: fadeSlide 12s infinite;
+    opacity: 0;
+    animation: fadeSlide 15s infinite;
 }
 
 /* SLIDE 1 */
-.hero::before {
-    background-image: url('Gemini_Generated_Image_x3ryl5x3ryl5x3ry.png'); /* replace */
+.slide1 {
+    background-image: url('Gemini_Generated_Image_6tcck96tcck96tcc.png'); 
     animation-delay: 0s;
 }
 
 /* SLIDE 2 */
-.hero::after {
-    background-image: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png'); /* your current image */
-    animation-delay: 6s;
+.slide2 {
+    background-image: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png');
+    animation-delay: 5s;
 }
 
-/* DARK OVERLAY */
-.hero {
-    position: relative;
+/* SLIDE 3 */
+.slide3 {
+    background-image: url('Gemini_Generated_Image_cva643cva643cva6.png'); 
+    animation-delay: 10s;
 }
 
+/* OVERLAY */
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -154,12 +154,21 @@ nav a:hover {
     z-index: 1;
 }
 
-/* TEXT */
+/* TEXT ABOVE EVERYTHING */
 .hero h1,
 .hero p,
 .hero button {
     position: relative;
     z-index: 2;
+}
+
+/* ANIMATION */
+@keyframes fadeSlide {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
 }
 
 /* ANIMATION */
@@ -271,11 +280,11 @@ footer {
     </nav>
 </header>
 <div class="hero">
-    <div class="hero-overlay"></div>
+    <div class="slide slide1"></div>
+    <div class="slide slide2"></div>
+    <div class="slide slide3"></div>
 
-    <h1>TITO-HOBS</h1>
-    <p>Gunpla • Mecha • Model Kits Universe</p>
-    <button>ENTER SHOP</button>
+    <div class="hero-overlay"></div>
 </div>
 
 <section id="grades">
