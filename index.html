@@ -87,7 +87,7 @@ header {
 }
 
 .logo img {
-    height: 55px;
+    height: 155px;
     filter: drop-shadow(0 0 8px #ff2e2e);
 }
 
@@ -107,43 +107,74 @@ nav a:hover {
 /* HERO */
 .hero {
     position: relative;
+    height: 100vh;              /* FULL SCREEN HERO */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 160px 20px; /* bigger hero height */
-    background: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png') center/cover no-repeat;
+    overflow: hidden;
     border-bottom: 1px solid #222;
 }
 
-/* LIGHTER OVERLAY (less dark than before) */
+/* BACKGROUND IMAGE LAYER */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png') center/cover no-repeat;
+    filter: brightness(1.25) contrast(1.1);
+    transform: scale(1.08); /* cinematic zoom */
+    z-index: 0;
+}
+
+/* DARK OVERLAY (LIGHTER FOR BRIGHTER FEEL) */
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45); /* reduced darkness */
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
 }
 
-/* BRIGHTNESS BOOST */
-.hero {
-    filter: brightness(1.2) contrast(1.1);
-}
-
-/* TEXT ABOVE OVERLAY */
+/* TEXT CONTENT */
 .hero h1,
 .hero p {
     position: relative;
     z-index: 2;
 }
 
-/* STRONGER TEXT VISIBILITY */
+/* TITLE */
 .hero h1 {
-    font-size: 4em; /* bigger title */
+    font-size: 5em;
     color: #ff2e2e;
-    text-shadow: 0 0 25px #ff2e2e, 0 0 50px #ff2e2e;
+    text-shadow: 0 0 25px #ff2e2e, 0 0 60px #ff2e2e;
+    margin: 0;
 }
 
+/* SUBTEXT */
 .hero p {
-    margin-top: 15px;
+    margin-top: 20px;
+    font-size: 1.4em;
     color: #eee;
-    font-size: 1.2em;
+}
+
+/* OPTIONAL BUTTON STYLE (if you add CTA later) */
+.hero button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: 1em;
+    background: #ff2e2e;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff2e2e;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px #ff2e2e;
 }
 
 /* SECTION */
