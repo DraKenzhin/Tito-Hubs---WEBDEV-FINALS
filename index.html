@@ -70,13 +70,16 @@ body {
 
 /* HEADER */
 header {
+   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     padding: 15px 40px;
     background: linear-gradient(90deg, #0a0a0f, #1a1a2e);
     border-bottom: 2px solid #ff2e2e;
     box-shadow: 0 0 15px #ff2e2e33;
+}
 }
 
 /* LOGO */
@@ -273,10 +276,15 @@ footer {
         <img src="ChatGPT Image May 1, 2026, 08_51_21 PM.png" alt="Tito-Hobs Logo">
     </div>
 
+    <!-- TOGGLE BUTTON -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
     <nav>
         <a href="#shop">Shop</a>
         <a href="#grades">Grades</a>
         <a href="#timeline">Timeline</a>
+    </nav>
+</header>
     </nav>
 </header>
 <div class="hero">
