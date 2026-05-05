@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -16,11 +15,9 @@
     font-family: 'Orbitron', sans-serif;
 }
 
-/* BODY */
 body {
     background: radial-gradient(circle at top, #0f0f1a, #000);
     color: #fff;
-    overflow-x: hidden;
     display: flex;
 }
 
@@ -33,7 +30,6 @@ body {
     top: 0;
     background: linear-gradient(180deg, #0a0a0f, #111827);
     border-right: 2px solid #ff2e2e;
-    box-shadow: 5px 0 20px #ff2e2e22;
     padding: 20px;
 }
 
@@ -41,7 +37,6 @@ body {
     color: #ff2e2e;
     text-align: center;
     margin-bottom: 25px;
-    text-shadow: 0 0 10px #ff2e2e55;
 }
 
 .sidebar a {
@@ -50,16 +45,10 @@ body {
     margin: 10px 0;
     text-decoration: none;
     color: #ccc;
-    background: rgba(255,255,255,0.03);
-    border-left: 3px solid transparent;
-    transition: 0.3s;
 }
 
 .sidebar a:hover {
     color: #ff2e2e;
-    border-left: 3px solid #ff2e2e;
-    background: rgba(255,46,46,0.1);
-    transform: translateX(5px);
 }
 
 /* MAIN */
@@ -71,290 +60,126 @@ body {
 /* HEADER */
 header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 20px;
     padding: 15px 40px;
-    background: linear-gradient(90deg, #0a0a0f, #1a1a2e);
-    border-bottom: 2px solid #ff2e2e;
-    box-shadow: 0 0 15px #ff2e2e33;
-}
+    background: #111;
 }
 
 /* LOGO */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 .logo img {
-    height: 145px;
-    filter: drop-shadow(0 0 8px #ff2e2e);
+    height: 100px;
 }
 
-/* NAV */
-nav a {
-    margin: 0 12px;
-    text-decoration: none;
-    color: #ccc;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #ff2e2e;
-    text-shadow: 0 0 10px #ff2e2e;
-}
-
-/* HERO */
 /* HERO */
 .hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* ALL SLIDES */
-.slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    transform: scale(1.08);
-    opacity: 0;
-    animation: fadeSlide 15s infinite;
-}
-
-/* SLIDE 1 */
-.slide1 {
-    background-image: url('Gemini_Generated_Image_6tcck96tcck96tcc.png'); 
-    animation-delay: 0s;
-}
-
-/* SLIDE 2 */
-.slide2 {
-    background-image: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png');
-    animation-delay: 5s;
-}
-
-/* SLIDE 3 */
-.slide3 {
-    background-image: url('Gemini_Generated_Image_cva643cva643cva6.png'); 
-    animation-delay: 10s;
-}
-
-/* OVERLAY */
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.30);
-    z-index: 1;
-}
-
-/* TEXT ABOVE EVERYTHING */
-.hero h1,
-.hero p,
-.hero button {
-    position: relative;
-    z-index: 2;
-}
-
-/* ANIMATION */
-@keyframes fadeSlide {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    30% { opacity: 1; }
-    40% { opacity: 0; }
-    100% { opacity: 0; }
-}
-
-/* ANIMATION */
-@keyframes fadeSlide {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    45% { opacity: 1; }
-    55% { opacity: 0; }
-    100% { opacity: 0; }
+    height: 60vh;
 }
 
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+    padding: 20px;
 }
 
 /* CARD */
 .card {
     background: rgba(20, 20, 33, 0.8);
     border: 1px solid #333;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     transition: 0.3s;
-    backdrop-filter: blur(5px);
+}
+
+/* ✅ IMAGE FIX */
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background: #0a0a0f;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .card:hover {
     border-color: #ff2e2e;
-    transform: translateY(-6px);
-    box-shadow: 0 0 15px #ff2e2e33;
 }
 
 .card h3 {
     color: #ff2e2e;
+    font-size: 14px;
 }
 
 /* TIMELINE */
 .timeline {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.timeline div {
-    padding: 15px 20px;
-    background: #1a1a2e;
-    border-left: 4px solid #ff2e2e;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.timeline div:hover {
-    background: #ff2e2e;
-    color: #000;
+    gap: 10px;
+    padding: 20px;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
-    background: #111;
-    border-top: 2px solid #ff2e2e;
-    margin-top: 40px;
-    color: #888;
-}
-
-/* RESPONSIVE */
-@media(max-width: 768px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-    .main {
-        margin-left: 0;
-        width: 100%;
-    }
 }
 </style>
-
-<script>
-function toggleSidebar() {
-    const sidebar = document.querySelector(".sidebar");
-    const main = document.querySelector(".main");
-
-    sidebar.classList.toggle("active");
-    main.classList.toggle("active");
-}
-</script>    
-
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
     <h2>⚙ TITO-HOBS</h2>
     <a href="#grades">Gunpla Grades</a>
     <a href="#timeline">Timeline</a>
     <a href="#shop">Shop</a>
-    <a href="#top">Return to Top</a>
 </div>
 
-<!-- MAIN CONTENT -->
 <div class="main">
 
-<header id="top">
-
+<header>
     <div class="logo">
-        <img src="ChatGPT Image May 1, 2026, 08_51_21 PM.png" alt="Tito-Hobs Logo">
+        <img src="ChatGPT Image May 1, 2026, 08_51_21 PM.png">
     </div>
-
-    <nav>
-        <a href="#shop">Shop</a>
-        <a href="#grades">Grades</a>
-        <a href="#timeline">Timeline</a>
-    </nav>
 </header>
-<div class="hero">
-    <div class="slide slide1"></div>
-    <div class="slide slide2"></div>
-    <div class="slide slide3"></div>
-
-    <div class="hero-overlay"></div>
-</div>
-
-<section id="grades">
-    <h2>Gunpla Grades</h2>
-    <div class="grid">
-        <div class="card"><h3>SD</h3><p>Super Deformed Kits</p></div>
-        <div class="card"><h3>EG</h3><p>Entry Grade</p></div>
-        <div class="card"><h3>HG</h3><p>High Grade</p></div>
-        <div class="card"><h3>RG</h3><p>Real Grade</p></div>
-        <div class="card"><h3>MG</h3><p>Master Grade</p></div>
-        <div class="card"><h3>PG</h3><p>Perfect Grade</p></div>
-    </div>
-</section>
-
-<section id="timeline">
-    <h2>Gundam Timeline</h2>
-    <div class="timeline">
-        <div>Universal Century</div>
-        <div>Cosmic Era</div>
-        <div>After Colony</div>
-        <div>Future Century</div>
-        <div>Correct Century</div>
-    </div>
-</section>
 
 <section id="shop">
-    <h2>Featured Kits</h2>
+    <h2 style="padding:20px;">Featured Kits</h2>
+
     <div class="grid">
-       <div class="card">
-    <img src="https://static.wikia.nocookie.net/gunplabuilders/images/1/16/HG-RX-78-2-Gundam-%28Beyond-Global%29-1.jpg/revision/latest/scale-to-width-down/1000?cb=20200603110234" alt="RX-78-2 Gundam">
-    <h3>HGBG RX-78-2 Gundam (Beyond Global) | Bandai</h3>
-    <p>₱850</p>
-</div>
-       <div class="card">
-    <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg/revision/latest/scale-to-width-down/1000?cb=20230319115239" alt="Wing Gundam">
-    <h3>RG XXXG-01W Wing Gundam | Bandai</h3>
-    <p>₱1,500</p>
-</div>
 
-<div class="card">
-    <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg/revision/latest?cb=20191218103637" alt="Barbatos">
-    <h3>MG ASW-G-08 Gundam Barbatos | Bandai</h3>
-    <p>₱3,200</p>
-</div>
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/1/16/HG-RX-78-2-Gundam-%28Beyond-Global%29-1.jpg">
+            <h3>HG RX-78-2 (Beyond Global)</h3>
+            <p>₱850</p>
+        </div>
 
-<div class="card">
-    <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg/revision/latest?cb=20190815061213" alt="Unicorn Gundam">
-    <h3>PG Unicorn</h3>
-    <p>₱12,000</p>
-</div>card"><h3>PG RX-0 Unicorn</h3><p>₱12,000</p></div>
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg">
+            <h3>RG Wing Gundam</h3>
+            <p>₱1,500</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg">
+            <h3>MG Barbatos</h3>
+            <p>₱3,200</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg">
+            <h3>PG Unicorn</h3>
+            <p>₱12,000</p>
+        </div>
+
     </div>
 </section>
 
 <footer>
-    <p>© 2026 Tito-Hobs | Built for Gunpla Builders</p>
+    <p>© 2026 Tito-Hobs</p>
 </footer>
 
 </div>
-
 </body>
 </html>
