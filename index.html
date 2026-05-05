@@ -420,11 +420,46 @@ RG GaoGaiGar
     <button onclick="toggleCart()">Close</button>
     <div id="cartItems"></div>
     <p id="cartTotal">Total: ₱0</p>
+  <button onclick="checkout()" style="
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    background:#ff2e2e;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+">
+Checkout
+</button>
 </div>
 
 <!-- MODAL -->
 <div class="modal" id="modal" onclick="this.style.display='none'">
 <div class="modal-content" id="modalContent"></div>
+  <div class="modal" id="checkoutModal" onclick="this.style.display='none'">
+<div class="modal-content" onclick="event.stopPropagation()">
+<h3>Checkout</h3>
+
+<input id="custName" placeholder="Name" style="width:100%;margin:5px 0;padding:5px;">
+<input id="custAddress" placeholder="Address" style="width:100%;margin:5px 0;padding:5px;">
+<input id="custPhone" placeholder="Phone Number" style="width:100%;margin:5px 0;padding:5px;">
+
+<div id="orderSummary" style="margin-top:10px;"></div>
+
+<button onclick="confirmOrder()" style="
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    background:#ff2e2e;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+">
+Place Order
+</button>
+
+</div>
+</div>
 </div>
 
 </div>
