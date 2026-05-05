@@ -29,6 +29,21 @@ body {
     
 }
 
+.page {
+    transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed + .main {
+    margin-left: 0;
+    width: 100%;
+}
+
+.sidebar.collapsed ~ .main,
+.sidebar.collapsed + .main {
+    transform: scale(1.02);
+    transform-origin: center;
+}
+
 /* SIDEBAR (ORIGINAL STYLE RESTORED) */
 .sidebar {
     width: 250px;
@@ -42,16 +57,8 @@ body {
     z-index: 1000;
 }
 
-.sidebar.collapsed + .main {
-    margin-left: 0;
-    width: 100%;
-}
-
-.sidebar.collapsed ~ .main,
-.sidebar.collapsed + .main {
-    transform: scale(1.02);
-    transform-origin: center;
-}
+.sidebar.collapsed {
+    left: -260px;
 }
 
 .sidebar h2 {
