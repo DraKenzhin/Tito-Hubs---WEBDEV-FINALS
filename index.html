@@ -563,15 +563,59 @@ c.style.display=c.innerText.toLowerCase().includes(q)?"block":"none";
 });
 }
 
-function openProduct(name,price){
-document.getElementById("modal").style.display="flex";
-document.getElementById("modalContent").innerHTML=`
-<h3>${name}</h3>
-<p>₱${price}</p>
-<button onclick="addToCart('${name}',${price})">Add to Cart</button>
-`;
+function openProduct(name, price) {
+    document.getElementById("modal").style.display = "flex";
+
+    document.getElementById("modalContent").innerHTML = `
+        <h3>${name}</h3>
+        <p>₱${price}</p>
+
+        <button onclick="addToCart('${name}',${price})">Add to Cart</button>
+
+        <hr>
+
+        <h4>💬 Pilot Comments</h4>
+
+        <div id="comments-${name}" style="max-height:120px; overflow-y:auto; margin-bottom:10px;"></div>
+
+        <input id="input-${name}" placeholder="Write comment..." style="width:100%; padding:5px;">
+        <button onclick="publishComment('${name}')">Publish</button>
+    `;
+
+    loadComments(name);
 }
 
+function publishComment(product) {
+    let input = document.getElementById(`input-${product}`);
+    let text = input.value.trim();
+
+    if (!text) return;
+
+    let comments = JSON.parse(localStorage.getItem(product)) || [];
+
+    comments.push({
+        text: text,
+        time: new Date().toLocaleString()
+    });
+
+    localStorage.setItem(product, JSON.stringify(comments));
+
+    input.value = "";
+    loadComments(product);
+}
+
+function loadComments(product) {
+    let box = document.getElementById(`comments-${product}`);
+    let comments = JSON.parse(localStorage.getItem(product)) || [];
+
+    box.innerHTML = comments.map(c => `
+        <div style="font-size:11px; padding:5px; border-bottom:1px solid #333;">
+            💬 ${c.text}<br>
+            <span style="opacity:0.5;">${c.time}</span>
+        </div>
+    `).join("");
+}
+    
 function addToCart(name,price){
 cart.push({name,price});
 updateCart();
