@@ -21,21 +21,21 @@
 body {
     background: radial-gradient(circle at top, #0f0f1a, #000);
     color: #fff;
-    overflow-x: hidden;
+}
+
+/* PAGE WRAPPER (FOOTER FIX CORE) */
+.page {
     display: flex;
-    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* SIDEBAR */
 .sidebar {
     width: 250px;
-    height: 100vh;
     position: fixed;
-    left: 0;
-    top: 0;
+    height: 100vh;
     background: linear-gradient(180deg, #0a0a0f, #111827);
     border-right: 2px solid #ff2e2e;
-    box-shadow: 5px 0 20px #ff2e2e22;
     padding: 20px;
 }
 
@@ -49,9 +49,8 @@ body {
     display: block;
     padding: 12px;
     margin: 10px 0;
-    text-decoration: none;
     color: #ccc;
-    transition: 0.3s;
+    text-decoration: none;
 }
 
 .sidebar a:hover {
@@ -62,13 +61,13 @@ body {
 .main {
     margin-left: 250px;
     width: calc(100% - 250px);
-    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* HEADER */
 header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     padding: 15px 40px;
     background: linear-gradient(90deg, #0a0a0f, #1a1a2e);
@@ -77,13 +76,13 @@ header {
 
 .logo img {
     height: 120px;
-    filter: drop-shadow(0 0 8px #ff2e2e);
 }
 
+/* NAV */
 nav a {
     margin: 0 12px;
-    text-decoration: none;
     color: #ccc;
+    text-decoration: none;
 }
 
 nav a:hover {
@@ -92,8 +91,8 @@ nav a:hover {
 
 /* HERO */
 .hero {
-    position: relative;
     height: 70vh;
+    position: relative;
     overflow: hidden;
 }
 
@@ -103,8 +102,8 @@ nav a:hover {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transform: scale(1.05);
     animation: fadeSlide 15s infinite;
+    transform: scale(1.05);
 }
 
 .slide1 {
@@ -128,7 +127,7 @@ nav a:hover {
     background: rgba(0,0,0,0.35);
 }
 
-/* HERO ANIMATION */
+/* SLIDE ANIMATION */
 @keyframes fadeSlide {
     0% { opacity: 0; }
     10% { opacity: 1; }
@@ -137,12 +136,16 @@ nav a:hover {
     100% { opacity: 0; }
 }
 
+/* SECTIONS */
+section {
+    padding: 20px;
+}
+
 /* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
-    padding: 20px;
 }
 
 /* CARD */
@@ -159,7 +162,7 @@ nav a:hover {
     transform: translateY(-6px);
 }
 
-/* IMAGE FIX */
+/* IMAGE FIX (SAFE SIZE) */
 .card img {
     width: 100%;
     height: 160px;
@@ -170,46 +173,24 @@ nav a:hover {
 /* BRANDS */
 .brands {
     display: flex;
-    flex-wrap: wrap;
     gap: 15px;
-    padding: 20px;
+    flex-wrap: wrap;
 }
 
 .brands div {
-    padding: 15px 20px;
+    padding: 15px;
     background: #1a1a2e;
     border-left: 4px solid #ff2e2e;
-    transition: 0.3s;
 }
 
-.brands div:hover {
-    background: #ff2e2e;
-    color: #000;
-}
-
-/* FOOTER */
+/* FOOTER FIX (NO BUG EVER) */
 footer {
+    margin-top: auto;
     text-align: center;
     padding: 20px;
     background: #111;
     border-top: 2px solid #ff2e2e;
-    margin-top: 40px;
-    width: 100%;
     color: #888;
-}
-
-/* RESPONSIVE */
-@media(max-width: 768px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    .main {
-        margin-left: 0;
-        width: 100%;
-    }
 }
 
 </style>
@@ -217,12 +198,14 @@ footer {
 
 <body>
 
+<div class="page">
+
 <!-- SIDEBAR -->
 <div class="sidebar">
     <h2>⚙ TITO-HOBS</h2>
     <a href="#grades">Gunpla Grades</a>
     <a href="#brands">Brands</a>
-    <a href="#shop">Shop</a>
+    <a href="#shop">Featured Kits</a>
 </div>
 
 <!-- MAIN -->
@@ -250,7 +233,7 @@ footer {
 
 <!-- GRADES -->
 <section id="grades">
-    <h2 style="padding:20px;">Gunpla Grades</h2>
+    <h2>Gunpla Grades</h2>
     <div class="grid">
         <div class="card"><h3>SD</h3></div>
         <div class="card"><h3>EG</h3></div>
@@ -261,47 +244,69 @@ footer {
     </div>
 </section>
 
-<!-- BRANDS (UPDATED) -->
+<!-- BRANDS -->
 <section id="brands">
-    <h2 style="padding:20px;">Gunpla Brands</h2>
-
+    <h2>Gunpla Brands</h2>
     <div class="brands">
         <div>Bandai</div>
         <div>Blokees</div>
         <div>Yolopark</div>
-        <div>Good Smile Company</div>
-        <div>Takara Tomy</div>
     </div>
 </section>
 
 <!-- SHOP -->
 <section id="shop">
-    <h2 style="padding:20px;">Featured Kits</h2>
+    <h2>Featured Kits</h2>
 
     <div class="grid">
 
+        <!-- YOUR RENAMED PRODUCTS (UNCHANGED) -->
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/1/16/HG-RX-78-2-Gundam-%28Beyond-Global%29-1.jpg">
-            <h3>RX-78-2</h3>
+            <h3>HGBG RX-78-2 Gundam (Beyond Global) | Bandai</h3>
             <p>₱800</p>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg">
-            <h3>Wing Gundam</h3>
+            <h3>RG XXXG-01W Wing Gundam | Bandai</h3>
             <p>₱1,500</p>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg">
-            <h3>Barbatos</h3>
+            <h3>MG ASW-G-08 Gundam Barbatos | Bandai</h3>
             <p>₱3,200</p>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg">
-            <h3>Unicorn</h3>
+            <h3>PG RX-0 Unicorn | Bandai</h3>
             <p>₱12,000</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/c/cd/HGUC-Char%27s-Zaku-II-%282020%29-1.jpg">
+            <h3>HGUC MS-06S Char's Zaku II (2020) | Bandai</h3>
+            <p>₱850</p>
+        </div>
+
+       <div class="card">
+            <img src="https://yolopark.com/cdn/shop/files/EVA01-01_1024x1024@2x.jpg?v=1719400469">
+            <h3>EVANGELION : AMK Series EVA-01 TEST TYPE | Yolopark</h3>
+            <p>₱1, 250</p>
+        </div>
+
+      <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/c/ce/Zaku-II-Type-FS-1.jpg/revision/latest/scale-to-width-down/1000?cb=20210704143540">
+            <h3>HGUC MS-06Fs Zaku II Type FS (Garma Zabi Custom) | Bandai</h3>
+            <p>₱750</p>
+        </div>
+
+       <div class="card">
+            <img src="https://blokees.com/cdn/shop/files/Maskgroup_2_1_610x_crop_center.png?v=1754733400">
+            <h3>Transformers Classic Class 08 | Nemesis Prime | Rise of the Beasts | Blokees</h3>
+            <p>₱850</p>
         </div>
 
     </div>
@@ -312,6 +317,7 @@ footer {
     <p>© 2026 Tito-Hobs | Built for Gunpla Builders</p>
 </footer>
 
+</div>
 </div>
 
 </body>
