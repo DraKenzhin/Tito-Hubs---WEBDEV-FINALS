@@ -70,7 +70,6 @@ body {
 
 /* HEADER */
 header {
-   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -182,7 +181,6 @@ nav a:hover {
     55% { opacity: 0; }
     100% { opacity: 0; }
 }
-}
 
 /* GRID */
 .grid {
@@ -254,6 +252,16 @@ footer {
     }
 }
 </style>
+
+<script>
+function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    const main = document.querySelector(".main");
+
+    sidebar.classList.toggle("active");
+    main.classList.toggle("active");
+}
+</script>    
 
 </head>
 
