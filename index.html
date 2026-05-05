@@ -18,10 +18,12 @@
 
 /* BODY */
 body {
+   body {
     background: radial-gradient(circle at top, #0f0f1a, #000);
     color: #fff;
     overflow-x: hidden;
     display: flex;
+    flex-direction: column; /* ✅ FIX */
 }
 
 /* SIDEBAR */
@@ -64,8 +66,10 @@ body {
 
 /* MAIN */
 .main {
+    .main {
     margin-left: 250px;
     width: calc(100% - 250px);
+    flex: 1;
 }
 
 /* HEADER */
@@ -238,12 +242,15 @@ nav a:hover {
 
 /* FOOTER */
 footer {
+    footer {
     text-align: center;
     padding: 20px;
     background: #111;
     border-top: 2px solid #ff2e2e;
     margin-top: 40px;
     color: #888;
+
+    width: 100%;
 }
 
 /* RESPONSIVE */
@@ -268,7 +275,7 @@ footer {
 <div class="sidebar">
     <h2>⚙ TITO-HOBS</h2>
     <a href="#grades">Gunpla Grades</a>
-    <a href="#timeline">Timeline</a>
+    <a href="#brands">Brands</a>
     <a href="#shop">Shop</a>
     <a href="#top">Return to Top</a>
 </div>
@@ -284,7 +291,7 @@ footer {
     <nav>
         <a href="#shop">Shop</a>
         <a href="#grades">Grades</a>
-        <a href="#timeline">Timeline</a>
+        <a href="#brands">Brands</a>
     </nav>
 </header>
 <div class="hero">
@@ -310,11 +317,9 @@ footer {
 <section id="timeline">
     <h2>Gundam Timeline</h2>
     <div class="timeline">
-        <div>Universal Century</div>
-        <div>Cosmic Era</div>
-        <div>After Colony</div>
-        <div>Future Century</div>
-        <div>Correct Century</div>
+        <div>Bandai</div>
+        <div>Blokees</div>
+        <div>Yolopark</div>
     </div>
 </section>
 
@@ -330,25 +335,25 @@ footer {
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg" alt="Wing Gundam">
-            <h3>RG XXXG-01W Wing Gundam</h3>
+            <h3>RG XXXG-01W Wing Gundam | Bandai</h3>
             <p>₱1,500</p>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg" alt="Barbatos">
-            <h3>MG ASW-G-08 Gundam Barbatos</h3>
+            <h3>MG ASW-G-08 Gundam Barbatos | Bandai</h3>
             <p>₱3,200</p>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg" alt="Unicorn">
-            <h3>PG RX-0 Unicorn Gundam</h3>
+            <h3>PG RX-0 Unicorn Gundam | Bandai</h3>
             <p>₱12,000</p>
         </div>
 
              <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/c/cd/HGUC-Char%27s-Zaku-II-%282020%29-1.jpg/revision/latest/scale-to-width-down/1000?cb=20200710050645" alt="Unicorn">
-            <h3>HGUC MS-06S Zaku II (2020)</h3>
+            <h3>HGUC MS-06S Zaku II (2020) | Bandai</h3>
             <p>₱850</p>
         </div>
 
