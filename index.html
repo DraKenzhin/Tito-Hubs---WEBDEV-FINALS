@@ -141,6 +141,22 @@ header {
     padding: 8px 12px;
     cursor: pointer;
 }
+.signin-btn {
+    padding: 8px 14px;
+    border: 1px solid #ff2e2e;
+    color: #ff2e2e;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    background: transparent;
+    transition: 0.2s;
+}
+
+.signin-btn:hover {
+    background: #ff2e2e;
+    color: #000;
+    box-shadow: 0 0 10px #ff2e2e;
+}
 
 /* LOGO (RESTORED ORIGINAL FILE NAME SLOT) */
 .logo img {
@@ -333,14 +349,19 @@ header {
 <div class="main">
 
 <header>
+   <header>
     <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
 
-    <!-- LOGO RESTORED -->
     <div class="logo">
         <img src="ChatGPT Image May 1, 2026, 08_51_21 PM.png">
     </div>
 
-    <input id="searchBar" onkeyup="applyFilters()" placeholder="Locate Mecha...">
+    <div style="display:flex; gap:10px; align-items:center;">
+        <input id="searchBar" onkeyup="applyFilters()" placeholder="Locate Mecha...">
+
+        <a href="signin.html" class="signin-btn">Sign In</a>
+    </div>
+</header>
 </header>
 
 <!-- HERO -->
