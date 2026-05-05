@@ -197,7 +197,15 @@ nav a:hover {
     transition: 0.3s;
     backdrop-filter: blur(5px);
 }
-
+.card img {
+    width: 100%;
+    max-width: 100%;
+    height: 160px;
+    max-height: 160px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+}
 .card:hover {
     border-color: #ff2e2e;
     transform: translateY(-6px);
@@ -313,10 +321,36 @@ footer {
 <section id="shop">
     <h2>Featured Kits</h2>
     <div class="grid">
-        <div class="card"><h3>HG RX-78-2</h3><p>₱800</p></div>
-        <div class="card"><h3>RG Wing Gundam</h3><p>₱1,500</p></div>
-        <div class="card"><h3>MG Barbatos</h3><p>₱3,200</p></div>
-        <div class="card"><h3>PG Unicorn</h3><p>₱12,000</p></div>
+       <section id="shop">
+    <h2>Featured Kits</h2>
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/1/16/HG-RX-78-2-Gundam-%28Beyond-Global%29-1.jpg" alt="RX-78-2">
+            <h3>HGBG RX-78-2 (Beyond Global) | Bandai</h3>
+            <p>₱800</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg" alt="Wing Gundam">
+            <h3>RG XXXG-01W Wing Gundam</h3>
+            <p>₱1,500</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg" alt="Barbatos">
+            <h3>MG ASW-G-08 Gundam Barbatos</h3>
+            <p>₱3,200</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg" alt="Unicorn">
+            <h3>PG RX-0 Unicorn Gundam</h3>
+            <p>₱12,000</p>
+        </div>
+
+    </div>
+</section>
     </div>
 </section>
 
