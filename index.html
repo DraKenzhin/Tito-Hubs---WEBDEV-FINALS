@@ -81,6 +81,31 @@ body {
     color: #ff2e2e;
 }
 
+.sidebar-music {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.sidebar-music h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.sidebar-music audio {
+    width: 100%;
+    outline: none;
+}
+
+.track-title {
+    font-size: 12px;
+    margin-top: 6px;
+    opacity: 0.8;
+}
 /* MAIN */
 .main {
     margin-left: 250px;
@@ -259,6 +284,18 @@ header {
     <a href="#grades">Grades</a>
     <a href="#brands">Brands</a>
     <a href="#shop">Shop</a>
+
+    <div class="sidebar-music">
+    <h3>Now Playing</h3>
+
+    <audio controls autoplay loop>
+        <source src="assets/audio/theme.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <p class="track-title">SZA - Snooze</p>
+       <p class="track-title">GUNDAM Hathaway: The Sorcery Of Nymph Circe Opening Theme</p>
+</div>
 </div>
 
 <!-- MAIN -->
@@ -496,4 +533,3 @@ document.getElementById("cartPanel").classList.toggle("open");
 
 </body>
 </html>
-
