@@ -90,6 +90,17 @@ body {
     color: white;
     font-family: 'Orbitron', sans-serif;
 }
+  .sidebar-music #albumCover {
+    width: 100%;
+    max-width: 200px;   /* keeps it large but controlled */
+    height: 200px;      /* makes it square like an album cover */
+    object-fit: cover;  /* prevents distortion */
+    border-radius: 10px;
+    margin: 10px auto;
+    display: block;
+    border: 2px solid #ff2e2e;
+    box-shadow: 0 0 15px rgba(255, 46, 46, 0.4);
+}
 
 .sidebar-music h3 {
     font-size: 14px;
@@ -288,9 +299,11 @@ header {
     <div class="sidebar-music">
     <h3>Now Playing</h3>
 
-    <audio controls autoplay loop>
+     <img id="albumCover" src="https://wallpapercave.com/wp/wp12123665.jpg" alt="Album Cover">
+      
+      <audio controls autoplay loop>
         <source src="SZA - Snooze.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+     
     </audio>
 
     <p class="track-title">SZA - Snooze</p>
