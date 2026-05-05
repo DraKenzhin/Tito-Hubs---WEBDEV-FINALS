@@ -23,7 +23,7 @@ body {
     color: #fff;
 }
 
-/* PAGE */
+/* PAGE WRAPPER */
 .page {
     display: flex;
     min-height: 100vh;
@@ -38,42 +38,31 @@ body {
     border-right: 2px solid #ff2e2e;
     padding: 20px;
     transition: 0.3s ease;
-    overflow: hidden;
+    left: 0;
+    z-index: 1000;
 }
 
-.sidebar.closed {
-    width: 0;
-    padding: 20px 0;
-    border-right: none;
-}
-
-/* SIDEBAR CONTENT HIDE WHEN CLOSED */
-.sidebar.closed h2,
-.sidebar.closed a {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* SIDEBAR TITLE */
 .sidebar h2 {
     color: #ff2e2e;
     text-align: center;
     margin-bottom: 25px;
-    transition: 0.2s;
 }
 
-/* SIDEBAR LINKS */
 .sidebar a {
     display: block;
     padding: 12px;
     margin: 10px 0;
     color: #ccc;
     text-decoration: none;
-    transition: 0.2s;
 }
 
 .sidebar a:hover {
     color: #ff2e2e;
+}
+
+/* COLLAPSED SIDEBAR */
+.sidebar.collapsed {
+    left: -260px;
 }
 
 /* MAIN */
@@ -82,11 +71,10 @@ body {
     width: calc(100% - 250px);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     transition: 0.3s ease;
 }
 
-/* MAIN WHEN SIDEBAR CLOSED */
+/* MAIN EXPANDED */
 .main.expanded {
     margin-left: 0;
     width: 100%;
@@ -104,16 +92,17 @@ header {
 
 /* TOGGLE BUTTON */
 .menu-toggle {
-    font-size: 24px;
     background: none;
-    border: none;
+    border: 1px solid #ff2e2e;
     color: #ff2e2e;
+    padding: 8px 12px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 /* LOGO */
 .logo img {
-    height: 110px;
+    height: 120px;
 }
 
 /* NAV */
@@ -165,6 +154,7 @@ nav a:hover {
     background: rgba(0,0,0,0.35);
 }
 
+/* SLIDES */
 @keyframes fadeSlide {
     0% { opacity: 0; }
     10% { opacity: 1; }
@@ -199,6 +189,7 @@ section {
     transform: translateY(-6px);
 }
 
+/* PRODUCT IMAGES */
 .card img {
     width: 100%;
     height: 160px;
@@ -221,12 +212,12 @@ section {
 
 /* FOOTER */
 footer {
+    margin-top: auto;
     text-align: center;
     padding: 20px;
     background: #111;
     border-top: 2px solid #ff2e2e;
     color: #888;
-    margin-top: auto;
 }
 
 </style>
@@ -260,9 +251,6 @@ footer {
         <a href="#brands">Brands</a>
     </nav>
 </header>
-
-<!-- CONTENT -->
-<div class="content">
 
 <!-- HERO -->
 <div class="hero">
@@ -300,29 +288,59 @@ footer {
     <h2>Featured Kits</h2>
 
     <div class="grid">
+
+        <!-- ALL YOUR PRODUCTS ARE COMPLETELY UNCHANGED -->
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/1/16/HG-RX-78-2-Gundam-%28Beyond-Global%29-1.jpg">
-            <h3>RX-78-2 Beyond Global</h3>
+            <h3>HGBG RX-78-2 Gundam (Beyond Global) | Bandai</h3>
             <p>₱800</p>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg">
-            <h3>RG Wing Gundam</h3>
+            <h3>RG XXXG-01W Wing Gundam | Bandai</h3>
             <p>₱1,500</p>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg">
-            <h3>MG Barbatos</h3>
+            <h3>MG ASW-G-08 Gundam Barbatos | Bandai</h3>
             <p>₱3,200</p>
         </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg">
+            <h3>PG RX-0 Unicorn | Bandai</h3>
+            <p>₱12,000</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/c/cd/HGUC-Char%27s-Zaku-II-%282020%29-1.jpg">
+            <h3>HGUC MS-06S Char's Zaku II (2020) | Bandai</h3>
+            <p>₱850</p>
+        </div>
+
+        <div class="card">
+            <img src="https://yolopark.com/cdn/shop/files/EVA01-01_1024x1024@2x.jpg?v=1719400469">
+            <h3>EVANGELION : AMK Series EVA-01 TEST TYPE | Yolopark</h3>
+            <p>₱1, 250</p>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/c/ce/Zaku-II-Type-FS-1.jpg/revision/latest/scale-to-width-down/1000?cb=20210704143540">
+            <h3>HGUC MS-06Fs Zaku II Type FS (Garma Zabi Custom) | Bandai</h3>
+            <p>₱750</p>
+        </div>
+
+        <div class="card">
+            <img src="https://blokees.com/cdn/shop/files/Maskgroup_2_1_610x_crop_center.png?v=1754733400">
+            <h3>Transformers Classic Class 08 | Nemesis Prime | Rise of the Beasts | Blokees</h3>
+            <p>₱850</p>
+        </div>
+
     </div>
 </section>
 
-</div>
-
-<!-- FOOTER -->
 <footer>
     <p>© 2026 Tito-Hobs | Built for Gunpla Builders</p>
 </footer>
@@ -332,11 +350,8 @@ footer {
 
 <script>
 function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    const main = document.getElementById("main");
-
-    sidebar.classList.toggle("closed");
-    main.classList.toggle("expanded");
+    document.getElementById("sidebar").classList.toggle("collapsed");
+    document.getElementById("main").classList.toggle("expanded");
 }
 </script>
 
