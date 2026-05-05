@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
+
 /* RESET */
 * {
     margin: 0;
@@ -18,12 +19,11 @@
 
 /* BODY */
 body {
-   body {
     background: radial-gradient(circle at top, #0f0f1a, #000);
     color: #fff;
     overflow-x: hidden;
     display: flex;
-    flex-direction: column; /* ✅ FIX */
+    flex-direction: column;
 }
 
 /* SIDEBAR */
@@ -43,7 +43,6 @@ body {
     color: #ff2e2e;
     text-align: center;
     margin-bottom: 25px;
-    text-shadow: 0 0 10px #ff2e2e55;
 }
 
 .sidebar a {
@@ -52,21 +51,15 @@ body {
     margin: 10px 0;
     text-decoration: none;
     color: #ccc;
-    background: rgba(255,255,255,0.03);
-    border-left: 3px solid transparent;
     transition: 0.3s;
 }
 
 .sidebar a:hover {
     color: #ff2e2e;
-    border-left: 3px solid #ff2e2e;
-    background: rgba(255,46,46,0.1);
-    transform: translateX(5px);
 }
 
 /* MAIN */
 .main {
-    .main {
     margin-left: 250px;
     width: calc(100% - 250px);
     flex: 1;
@@ -80,109 +73,68 @@ header {
     padding: 15px 40px;
     background: linear-gradient(90deg, #0a0a0f, #1a1a2e);
     border-bottom: 2px solid #ff2e2e;
-    box-shadow: 0 0 15px #ff2e2e33;
-}
-
-/* LOGO */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .logo img {
-    height: 145px;
+    height: 120px;
     filter: drop-shadow(0 0 8px #ff2e2e);
 }
 
-/* NAV */
 nav a {
     margin: 0 12px;
     text-decoration: none;
     color: #ccc;
-    transition: 0.3s;
 }
 
 nav a:hover {
     color: #ff2e2e;
-    text-shadow: 0 0 10px #ff2e2e;
 }
 
-/* HERO */
 /* HERO */
 .hero {
     position: relative;
-    height: 100vh;
+    height: 70vh;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
-/* ALL SLIDES */
 .slide {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
-    transform: scale(1.08);
     opacity: 0;
+    transform: scale(1.05);
     animation: fadeSlide 15s infinite;
 }
 
-/* SLIDE 1 */
 .slide1 {
-    background-image: url('Gemini_Generated_Image_6tcck96tcck96tcc.png'); 
+    background-image: url('Gemini_Generated_Image_6tcck96tcck96tcc.png');
     animation-delay: 0s;
 }
 
-/* SLIDE 2 */
 .slide2 {
     background-image: url('ChatGPT Image May 1, 2026, 08_38_31 PM.png');
     animation-delay: 5s;
 }
 
-/* SLIDE 3 */
 .slide3 {
-    background-image: url('Gemini_Generated_Image_cva643cva643cva6.png'); 
+    background-image: url('Gemini_Generated_Image_cva643cva643cva6.png');
     animation-delay: 10s;
 }
 
-/* OVERLAY */
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.30);
-    z-index: 1;
+    background: rgba(0,0,0,0.35);
 }
 
-/* TEXT ABOVE EVERYTHING */
-.hero h1,
-.hero p,
-.hero button {
-    position: relative;
-    z-index: 2;
-}
-
-/* ANIMATION */
+/* HERO ANIMATION */
 @keyframes fadeSlide {
     0% { opacity: 0; }
     10% { opacity: 1; }
-    30% { opacity: 1; }
-    40% { opacity: 0; }
+    40% { opacity: 1; }
+    50% { opacity: 0; }
     100% { opacity: 0; }
-}
-
-/* ANIMATION */
-@keyframes fadeSlide {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    45% { opacity: 1; }
-    55% { opacity: 0; }
-    100% { opacity: 0; }
-}
 }
 
 /* GRID */
@@ -190,67 +142,60 @@ nav a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
+    padding: 20px;
 }
 
 /* CARD */
 .card {
     background: rgba(20, 20, 33, 0.8);
     border: 1px solid #333;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     transition: 0.3s;
-    backdrop-filter: blur(5px);
 }
-.card img {
-    width: 100%;
-    max-width: 100%;
-    height: 160px;
-    max-height: 160px;
-    object-fit: contain;
-    display: block;
-    margin-bottom: 10px;
-}
+
 .card:hover {
     border-color: #ff2e2e;
     transform: translateY(-6px);
-    box-shadow: 0 0 15px #ff2e2e33;
 }
 
-.card h3 {
-    color: #ff2e2e;
+/* IMAGE FIX */
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
-/* TIMELINE */
-.timeline {
+/* BRANDS */
+.brands {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    padding: 20px;
 }
 
-.timeline div {
+.brands div {
     padding: 15px 20px;
     background: #1a1a2e;
     border-left: 4px solid #ff2e2e;
-    cursor: pointer;
     transition: 0.3s;
 }
 
-.timeline div:hover {
+.brands div:hover {
     background: #ff2e2e;
     color: #000;
 }
 
 /* FOOTER */
 footer {
-    footer {
     text-align: center;
     padding: 20px;
     background: #111;
     border-top: 2px solid #ff2e2e;
     margin-top: 40px;
-    color: #888;
-
     width: 100%;
+    color: #888;
 }
 
 /* RESPONSIVE */
@@ -260,13 +205,14 @@ footer {
         width: 100%;
         height: auto;
     }
+
     .main {
         margin-left: 0;
         width: 100%;
     }
 }
-</style>
 
+</style>
 </head>
 
 <body>
@@ -277,15 +223,14 @@ footer {
     <a href="#grades">Gunpla Grades</a>
     <a href="#brands">Brands</a>
     <a href="#shop">Shop</a>
-    <a href="#top">Return to Top</a>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="main">
 
-<header id="top">
+<header>
     <div class="logo">
-        <img src="ChatGPT Image May 1, 2026, 08_51_21 PM.png" alt="Tito-Hobs Logo">
+        <img src="ChatGPT Image May 1, 2026, 08_51_21 PM.png">
     </div>
 
     <nav>
@@ -294,74 +239,75 @@ footer {
         <a href="#brands">Brands</a>
     </nav>
 </header>
+
+<!-- HERO -->
 <div class="hero">
     <div class="slide slide1"></div>
     <div class="slide slide2"></div>
     <div class="slide slide3"></div>
-
     <div class="hero-overlay"></div>
 </div>
 
+<!-- GRADES -->
 <section id="grades">
-    <h2>Gunpla Grades</h2>
+    <h2 style="padding:20px;">Gunpla Grades</h2>
     <div class="grid">
-        <div class="card"><h3>SD</h3><p>Super Deformed Kits</p></div>
-        <div class="card"><h3>EG</h3><p>Entry Grade</p></div>
-        <div class="card"><h3>HG</h3><p>High Grade</p></div>
-        <div class="card"><h3>RG</h3><p>Real Grade</p></div>
-        <div class="card"><h3>MG</h3><p>Master Grade</p></div>
-        <div class="card"><h3>PG</h3><p>Perfect Grade</p></div>
+        <div class="card"><h3>SD</h3></div>
+        <div class="card"><h3>EG</h3></div>
+        <div class="card"><h3>HG</h3></div>
+        <div class="card"><h3>RG</h3></div>
+        <div class="card"><h3>MG</h3></div>
+        <div class="card"><h3>PG</h3></div>
     </div>
 </section>
 
-<section id="timeline">
-    <h2>Gundam Timeline</h2>
-    <div class="timeline">
+<!-- BRANDS (UPDATED) -->
+<section id="brands">
+    <h2 style="padding:20px;">Gunpla Brands</h2>
+
+    <div class="brands">
         <div>Bandai</div>
         <div>Blokees</div>
         <div>Yolopark</div>
+        <div>Good Smile Company</div>
+        <div>Takara Tomy</div>
     </div>
 </section>
 
+<!-- SHOP -->
 <section id="shop">
-    <h2>Featured Kits</h2>
+    <h2 style="padding:20px;">Featured Kits</h2>
+
     <div class="grid">
 
         <div class="card">
-            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/1/16/HG-RX-78-2-Gundam-%28Beyond-Global%29-1.jpg" alt="RX-78-2">
-            <h3>HGBG RX-78-2 (Beyond Global) | Bandai</h3>
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/1/16/HG-RX-78-2-Gundam-%28Beyond-Global%29-1.jpg">
+            <h3>RX-78-2</h3>
             <p>₱800</p>
         </div>
 
         <div class="card">
-            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg" alt="Wing Gundam">
-            <h3>RG XXXG-01W Wing Gundam | Bandai</h3>
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/d/d2/RG-Wing-Gundam-1.jpg">
+            <h3>Wing Gundam</h3>
             <p>₱1,500</p>
         </div>
 
         <div class="card">
-            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg" alt="Barbatos">
-            <h3>MG ASW-G-08 Gundam Barbatos | Bandai</h3>
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/9/94/MG_Barbatos_01.jpg">
+            <h3>Barbatos</h3>
             <p>₱3,200</p>
         </div>
 
         <div class="card">
-            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg" alt="Unicorn">
-            <h3>PG RX-0 Unicorn Gundam | Bandai</h3>
+            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/0/03/PG-Unicorn-Gundam-1.jpg">
+            <h3>Unicorn</h3>
             <p>₱12,000</p>
         </div>
 
-             <div class="card">
-            <img src="https://static.wikia.nocookie.net/gunplabuilders/images/c/cd/HGUC-Char%27s-Zaku-II-%282020%29-1.jpg/revision/latest/scale-to-width-down/1000?cb=20200710050645" alt="Unicorn">
-            <h3>HGUC MS-06S Zaku II (2020) | Bandai</h3>
-            <p>₱850</p>
-        </div>
-
-    </div>
-</section>
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <p>© 2026 Tito-Hobs | Built for Gunpla Builders</p>
 </footer>
