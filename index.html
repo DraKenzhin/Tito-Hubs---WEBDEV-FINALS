@@ -315,6 +315,29 @@ header {
     background: #ff0000;
     transform: scale(1.03);
 }
+
+.safe-footer {
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 1px solid #ff2e2e;
+    color: #b5b5b5;
+    font-size: 11px;
+
+    /* IMPORTANT: prevents layout shift */
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensures footer never overlaps floating cart */
+.cart-button {
+    z-index: 2000;
+}
+
+.cart-panel {
+    z-index: 2000;
+}
 </style>
 </head>
 
@@ -661,6 +684,9 @@ function deployCheckout() {
     
 </script>
 
+<footer class="safe-footer">
+    <p>© 2026 TITO-HOBS MECHA ARMORY •••• All Systems •••• Contact No: 09606216225</p>
+</footer>
 </body>
 </html>
 
