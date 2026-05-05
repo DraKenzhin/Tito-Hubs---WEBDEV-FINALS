@@ -26,6 +26,18 @@ body {
 .page {
     display: flex;
     min-height: 100vh;
+     transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed + .main {
+    margin-left: 0;
+    width: 100%;
+}
+
+.sidebar.collapsed ~ .main,
+.sidebar.collapsed + .main {
+    transform: scale(1.02);
+    transform-origin: center;
 }
 
 /* SIDEBAR (ORIGINAL STYLE RESTORED) */
