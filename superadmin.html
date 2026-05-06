@@ -181,6 +181,98 @@ button:hover {
 </div>
 
 <script>
+
+
+<!-- ALL YOUR HTML ABOVE -->
+
+<script>
+// ---------------- USERS LOAD ----------------
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+// if empty, seed current superadmin
+if(users.length === 0){
+    users.push({
+        id: Date.now(),
+        username: localStorage.getItem("pilotId") || "SUPERADMIN",
+        role: "superadmin"
+    });
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+renderUsers();
+
+// ---------------- CREATE USER ----------------
+function createUser(){
+
+    const username = document.getElementById("newUser").value.trim();
+    const role = document.getElementById("newRole").value;
+
+    if(!username){
+        alert("Enter username");
+        return;
+    }
+
+    const user = {
+        id: Date.now(),
+        username,
+        role
+    };
+
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    document.getElementById("newUser").value = "";
+
+    renderUsers();
+
+    alert(`USER CREATED\n${username} (${role.toUpperCase()})`);
+}
+
+// ---------------- DELETE USER ----------------
+function deleteUser(id){
+
+    const target = users.find(u => u.id === id);
+
+    if(!target) return;
+
+    if(target.role === "superadmin"){
+        alert("Cannot delete Super Admin");
+        return;
+    }
+
+    users = users.filter(u => u.id !== id);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    renderUsers();
+}
+
+// ---------------- RENDER USERS ----------------
+function renderUsers(){
+
+    const list = document.getElementById("userList");
+    if(!list) return;
+
+    list.innerHTML = "";
+
+    users.forEach(u => {
+
+        list.innerHTML += `
+        <div style="
+            border:1px solid #ff2e2e;
+            padding:8px;
+            margin:5px 0;
+        ">
+            <strong>${u.username}</strong><br>
+            Role: ${u.role.toUpperCase()}
+
+            <button onclick="deleteUser(${u.id})"
+                style="margin-top:5px;background:#000;border:1px solid #ff2e2e;color:#ff2e2e;">
+                DELETE USER
+            </button>
+        </div>
+        `;
+    });
+}
   
 console.log("SUPER ADMIN CORE LOADED");
 
