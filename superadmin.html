@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SUPER ADMIN CORE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(circle at top, #1a0000, #000);
+    color: #ff2e2e;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ff2e2e;
+    box-shadow: 0 0 20px #ff2e2e;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.panel, .products {
+    flex: 1;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid #ff2e2e;
+    padding: 15px;
+    box-shadow: 0 0 10px #ff2e2e;
+}
+
+input, select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #111;
+    border: 1px solid #ff2e2e;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}
+
+button {
+    background: #ff2e2e;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.product-card {
+    border: 1px solid #ff2e2e;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.product-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>SUPER ADMIN CORE</h1>
+    <p id="userInfo"></p>
+</div>
+
+<div class="container">
+
+    <!-- PRODUCT UPLOAD PANEL -->
+    <div class="panel">
+        <h3>UPLOAD PRODUCT</h3>
+
+        <input type="text" id="name" placeholder="Product Name">
+
+        <select id="grade">
+            <option value="SD">SD (Super Deformed)</option>
+            <option value="HG">HG (High Grade)</option>
+            <option value="RG">RG (Real Grade)</option>
+            <option value="MG">MG (Master Grade)</option>
+            <option value="PG">PG (Perfect Grade)</option>
+        </select>
+
+        <input type="file" id="image" accept="image/*">
+
+        <button onclick="addProduct()">DEPLOY PRODUCT</button>
+    </div>
+
+    <!-- PRODUCT DISPLAY -->
+    <div class="products">
+        <h3>PRODUCT DATABASE</h3>
+        <div id="productList"></div>
+    </div>
+
+</div>
+
+<script>
+// SECURITY CHECK
+const role = localStorage.getItem("role");
+const pilotId = localStorage.getItem("pilotId");
+
+if(role !== "superadmin"){
+    alert("ACCESS DENIED: SUPER ADMIN ONLY");
+    window.location.href = "index.html";
+}
+
+document.getElementById("userInfo").innerText =
+"Logged in as: " + pilotId + " | ROLE: " + role.toUpperCase();
+
+// LOAD PRODUCTS
+let products = JSON.parse(localStorage.getItem("products")) || [];
+renderProducts();
+
+// ADD PRODUCT
+function addProduct(){
+    const name = document.getElementById("name").value;
+    const grade = document.getElementById("grade").value;
+    const file = document.getElementById("image").files[0];
+
+    if(!name || !file){
+        alert("Missing data!");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+        const product = {
+            name: name,
+            grade: grade,
+            image: e.target.result
+        };
+
+        products.push(product);
+        localStorage.setItem("products", JSON.stringify(products));
+
+        renderProducts();
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// DISPLAY PRODUCTS
+function renderProducts(){
+    const list = document.getElementById("productList");
+    list.innerHTML = "";
+
+    products.forEach(p => {
+        list.innerHTML += `
+            <div class="product-card">
+                <img src="${p.image}">
+                <h4>${p.name}</h4>
+                <p>GRADE: ${p.grade}</p>
+            </div>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>
