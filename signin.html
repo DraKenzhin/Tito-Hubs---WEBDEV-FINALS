@@ -83,27 +83,33 @@ function login(){
     const pilotId = document.getElementById("pilotId").value;
     const accessCode = document.getElementById("accessCode").value;
 
-    // simple validation
     if(!pilotId || !accessCode){
         alert("Missing credentials!");
         return;
     }
 
-    // store fake session
+    // store session
     localStorage.setItem("role", role);
     localStorage.setItem("pilotId", pilotId);
 
     alert("Access Granted: " + role.toUpperCase());
 
-    // routing system
-    if(role === "pilot"){
-        window.location.href = "index.html"; // store
-    }
-    else if(role === "admin"){
-        window.location.href = "admin.html";
-    }
-    else if(role === "superadmin"){
-        window.location.href = "superadmin.html";
+    // FIXED ROUTING (IMPORTANT)
+    switch(role){
+        case "pilot":
+            window.location.href = "index.html";
+            break;
+
+        case "admin":
+            window.location.href = "admin.html";   // ✅ FIXED HERE
+            break;
+
+        case "superadmin":
+            window.location.href = "superadmin.html";
+            break;
+
+        default:
+            alert("Invalid role selected");
     }
 }
 </script>
