@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tito-Hobs Sign Up</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle at top, #1a0000, #000);
+    font-family:Orbitron;
+    color:white;
+}
+
+.box {
+    width:320px;
+    padding:20px;
+    border:2px solid red;
+    box-shadow:0 0 20px red;
+    background:rgba(0,0,0,0.7);
+}
+
+h2 {
+    color:red;
+    text-align:center;
+}
+
+input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    background:#111;
+    border:1px solid red;
+    color:white;
+}
+
+button {
+    width:100%;
+    padding:10px;
+    background:red;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover {
+    background:#ff2e2e;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>SIGN UP</h2>
+
+    <input id="user" placeholder="Username">
+    <input id="email" type="email" placeholder="Gmail Address">
+    <input id="pass" type="password" placeholder="Password">
+
+    <button onclick="signup()">Create Account</button>
+</div>
+
+<script>
+function signup(){
+
+    let user = document.getElementById("user").value;
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("pass").value;
+
+    if(!user || !email || !pass){
+        alert("Fill all fields");
+        return;
+    }
+
+    // basic gmail check
+    if(!email.includes("@gmail.com")){
+        alert("Use a valid Gmail address");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // prevent duplicates
+    let exists = users.find(u => u.user === user || u.email === email);
+
+    if(exists){
+        alert("User or email already exists");
+        return;
+    }
+
+    users.push({
+        user,
+        email,
+        pass
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Account created!");
+    window.location.href = "signin.html";
+}
+</script>
+
+</body>
+</html>
