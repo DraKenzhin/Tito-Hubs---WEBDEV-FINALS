@@ -170,19 +170,14 @@ if(role !== "superadmin"){
 document.getElementById("userInfo").innerText =
 `Logged in as: ${pilotId} | ROLE: ${role.toUpperCase()}`;
 
-// ---------------- LOAD DATA ----------------
+// ---------------- DATA ----------------
 let products = JSON.parse(localStorage.getItem("products")) || [];
 renderProducts();
 
-// ---------------- BUTTON FIX ----------------
-document.addEventListener("DOMContentLoaded", () => {
-
-    document.querySelector("button[onclick='addProduct()']")
-        ?.addEventListener("click", addProduct);
-
-    document.querySelector(".store-btn")
-        ?.addEventListener("click", openStore);
-});
+// ---------------- SAVE ----------------
+function save(){
+    localStorage.setItem("products", JSON.stringify(products));
+}
 
 // ---------------- ADD PRODUCT ----------------
 function addProduct(){
@@ -203,7 +198,7 @@ function addProduct(){
     reader.onload = function(e){
 
         const product = {
-            id: Date.now(), // IMPORTANT UNIQUE ID
+            id: Date.now(),
             name,
             brand,
             grade,
@@ -213,39 +208,54 @@ function addProduct(){
         };
 
         products.push(product);
-        saveAndRender();
+        save();
+        renderProducts();
 
-        console.log("PRODUCT ADDED:", product);
+        // 🔔 DEPLOY NOTIFICATION
+        alert(`✔ PRODUCT DEPLOYED SUCCESSFULLY\n\n${name} has been added to system.`);
+        console.log("DEPLOYED:", product);
     };
 
     reader.readAsDataURL(file);
 }
 
-// ---------------- SAVE ----------------
-function saveAndRender(){
-    localStorage.setItem("products", JSON.stringify(products));
-    renderProducts();
-}
-
-// ---------------- DELETE (FIXED SAFE VERSION) ----------------
+// ---------------- DELETE (SUPER ADMIN CAN DELETE ALL) ----------------
 function deleteProduct(id){
+
+    const target = products.find(p => p.id === id);
+
+    if(!target){
+        alert("Product not found!");
+        return;
+    }
+
+    const confirmDelete = confirm(
+        `DELETE PRODUCT?\n\n${target.name}\nStatus: ${target.published ? "DEPLOYED" : "DRAFT"}`
+    );
+
+    if(!confirmDelete) return;
 
     products = products.filter(p => p.id !== id);
 
-    saveAndRender();
+    save();
+    renderProducts();
 
-    console.log("DELETED PRODUCT ID:", id);
+    console.log("DELETED:", id);
 }
 
 // ---------------- SEND TO STORE ----------------
 function sendToStore(id){
 
     const product = products.find(p => p.id === id);
-    if(product){
-        product.published = true;
-        saveAndRender();
-        alert("Sent to Store!");
-    }
+
+    if(!product) return;
+
+    product.published = true;
+    save();
+    renderProducts();
+
+    // 🔔 DEPLOY CONFIRMATION
+    alert(`🚀 DEPLOYED TO STORE\n\n${product.name} is now LIVE.`);
 }
 
 // ---------------- OPEN STORE ----------------
@@ -257,8 +267,6 @@ function openStore(){
 function renderProducts(){
 
     const list = document.getElementById("productList");
-    if(!list) return;
-
     list.innerHTML = "";
 
     products.forEach(p => {
@@ -270,10 +278,15 @@ function renderProducts(){
             <p>Brand: ${p.brand}</p>
             <p>Grade: ${p.grade}</p>
             <p>Price: ₱${p.price}</p>
-            <p>Status: ${p.published ? "IN STORE" : "DRAFT"}</p>
+            <p>Status: ${p.published ? "DEPLOYED" : "DRAFT"}</p>
 
-            <button onclick="sendToStore(${p.id})">SEND TO STORE</button>
-            <button class="delete-btn" onclick="deleteProduct(${p.id})">DELETE</button>
+            <button onclick="sendToStore(${p.id})">
+                ${p.published ? "RE-DEPLOY" : "SEND TO STORE"}
+            </button>
+
+            <button class="delete-btn" onclick="deleteProduct(${p.id})">
+                DELETE (SUPER ADMIN)
+            </button>
         </div>
         `;
     });
