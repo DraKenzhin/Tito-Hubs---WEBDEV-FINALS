@@ -1,3 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SUPER ADMIN CORE</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: radial-gradient(circle at top, #1a0000, #000);
+    font-family: 'Orbitron', sans-serif;
+    color: #ff2e2e;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ff2e2e;
+    box-shadow: 0 0 20px #ff2e2e;
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    min-height: calc(100vh - 90px);
+    box-sizing: border-box;
+}
+
+/* PANELS */
+.panel, .products {
+    flex: 1;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid #ff2e2e;
+    padding: 15px;
+    box-shadow: 0 0 10px #ff2e2e;
+    box-sizing: border-box;
+}
+
+/* INPUTS */
+input, select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #111;
+    border: 1px solid #ff2e2e;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    box-sizing: border-box;
+}
+
+/* BUTTONS */
+button {
+    background: #ff2e2e;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #ff0000;
+}
+
+/* STORE BUTTON */
+.store-btn {
+    background: #000;
+    border: 1px solid #ff2e2e;
+    color: #ff2e2e;
+}
+
+.store-btn:hover {
+    background: #ff2e2e;
+    color: #000;
+}
+
+/* PRODUCT CARD */
+.product-card {
+    border: 1px solid #ff2e2e;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.product-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.delete-btn {
+    background: #000;
+    border: 1px solid #ff2e2e;
+    color: #ff2e2e;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>SUPER ADMIN CORE</h1>
+    <p id="userInfo"></p>
+</div>
+
+<div class="container">
+
+<!-- UPLOAD PANEL -->
+<div class="panel">
+    <h3>UPLOAD PRODUCT</h3>
+
+    <input type="text" id="name" placeholder="Product Name">
+
+    <select id="brand">
+        <option value="Bandai">Bandai</option>
+        <option value="Yolopark">Yolopark</option>
+        <option value="Blokees">Blokees</option>
+    </select>
+
+    <select id="grade">
+        <option value="None">No Grade</option>
+        <option value="SD">SD</option>
+        <option value="HG">HG</option>
+        <option value="RG">RG</option>
+        <option value="MG">MG</option>
+        <option value="PG">PG</option>
+    </select>
+
+    <input type="number" id="price" placeholder="Price (₱)">
+
+    <input type="file" id="image" accept="image/*">
+
+    <button onclick="addProduct()">DEPLOY PRODUCT</button>
+
+    <!-- OPEN STORE -->
+    <button class="store-btn" onclick="openStore()">OPEN STORE</button>
+</div>
+
+<!-- PRODUCT DATABASE -->
+<div class="products">
+    <h3>PRODUCT DATABASE</h3>
+    <div id="productList"></div>
+</div>
+
+</div>
+
 <script>
 console.log("SUPER ADMIN CORE LOADED");
 
@@ -123,3 +279,6 @@ function renderProducts(){
     });
 }
 </script>
+
+</body>
+</html>
