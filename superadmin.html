@@ -117,7 +117,33 @@ button:hover {
 
 <!-- UPLOAD PANEL -->
 <div class="panel">
-    <h3>UPLOAD PRODUCT</h3>
+    ...
+</div>
+
+<!-- PRODUCT DATABASE -->
+<div class="products">
+    ...
+</div>
+
+<!-- 👇 ADD THIS HERE -->
+<div class="panel">
+    <h3>USER MANAGEMENT</h3>
+
+    <input type="text" id="newUser" placeholder="Username">
+
+    <select id="newRole">
+        <option value="pilot">Pilot</option>
+        <option value="admin">Admin</option>
+        <option value="superadmin">Super Admin</option>
+    </select>
+
+    <button onclick="createUser()">CREATE USER</button>
+
+    <h4 style="margin-top:15px;">SYSTEM USERS</h4>
+    <div id="userList"></div>
+</div>
+
+</div>
 
     <input type="text" id="name" placeholder="Product Name">
 
@@ -155,6 +181,7 @@ button:hover {
 </div>
 
 <script>
+  
 console.log("SUPER ADMIN CORE LOADED");
 
 // ---------------- SECURITY ----------------
@@ -295,3 +322,4 @@ function renderProducts(){
 
 </body>
 </html>
+
