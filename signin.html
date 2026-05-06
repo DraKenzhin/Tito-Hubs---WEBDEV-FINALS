@@ -68,7 +68,6 @@ h2 {
     <input type="text" id="pilotId" placeholder="Pilot ID">
     <input type="password" id="accessCode" placeholder="Access Code">
 
-    <!-- FAKE ROLE SELECTOR -->
     <select id="role">
         <option value="pilot">Pilot</option>
         <option value="admin">Admin</option>
@@ -79,19 +78,26 @@ h2 {
 </div>
 
 <script>
-<script>
 function login(){
     const role = document.getElementById("role").value;
     const pilotId = document.getElementById("pilotId").value;
+    const accessCode = document.getElementById("accessCode").value;
 
-    // fake session storage
+    // simple validation
+    if(!pilotId || !accessCode){
+        alert("Missing credentials!");
+        return;
+    }
+
+    // store fake session
     localStorage.setItem("role", role);
     localStorage.setItem("pilotId", pilotId);
 
-    alert("Access Granted. Role: " + role.toUpperCase());
+    alert("Access Granted: " + role.toUpperCase());
 
+    // routing system
     if(role === "pilot"){
-        window.location.href = "index.html";
+        window.location.href = "index.html"; // store
     }
     else if(role === "admin"){
         window.location.href = "admin.html";
@@ -100,27 +106,6 @@ function login(){
         window.location.href = "superadmin.html";
     }
 }
-
-function login(){
-    const role = document.getElementById("role").value;
-    const pilotId = document.getElementById("pilotId").value;
-
-    localStorage.setItem("role", role);
-    localStorage.setItem("pilotId", pilotId);
-
-    alert("Access Granted: " + role.toUpperCase());
-
-    if(role === "pilot"){
-        window.location.href = "index.html"; // store
-    }
-    else if(role === "admin"){
-        window.location.href = "admin.html";
-    }
-    else if(role === "superadmin"){
-        window.location.href = "superadmin.html"; // MUST NOT be index.html
-    }
-}
-    
 </script>
 
 </body>
