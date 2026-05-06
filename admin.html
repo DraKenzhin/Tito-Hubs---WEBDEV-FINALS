@@ -133,8 +133,8 @@ button:hover {
 
     <input type="file" id="image" accept="image/*">
 
-    <button onclick="addProduct()">DEPLOY PRODUCT</button>
-    <button class="store-btn" onclick="openStore()">OPEN STORE</button>
+    <button id="deployBtn">DEPLOY PRODUCT</button>
+<button id="storeBtn" class="store-btn">OPEN STORE</button>
 </div>
 
 <!-- PRODUCT DATABASE -->
@@ -263,7 +263,17 @@ function renderProducts(){
         `;
     });
 }
-</script>
+// OPEN STORE FIX
+document.getElementById("storeBtn").addEventListener("click", function () {
+    console.log("OPEN STORE CLICKED");
+    window.location.href = "index.html";
+});
 
+// DEPLOY FIX
+document.getElementById("deployBtn").addEventListener("click", function () {
+    console.log("DEPLOY CLICKED");
+    addProduct(); // calls your existing function
+});
+</script>
 </body>
 </html>
