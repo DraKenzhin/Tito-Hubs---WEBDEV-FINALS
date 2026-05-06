@@ -22,7 +22,7 @@ body {
 }
 
 .login-box {
-    width: 300px;
+    width: 320px;
     padding: 20px;
     border: 2px solid #ff2e2e;
     background: rgba(0,0,0,0.7);
@@ -30,13 +30,14 @@ body {
     text-align: center;
 }
 
-input {
+input, select {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     background: #111;
     border: 1px solid #ff2e2e;
     color: #fff;
+    font-family: 'Orbitron', sans-serif;
 }
 
 button {
@@ -64,16 +65,34 @@ h2 {
 <div class="login-box">
     <h2>TITO-HOBS Access Card</h2>
 
-    <input type="text" placeholder="Pilot ID">
-    <input type="password" placeholder="Access Code">
+    <input type="text" id="pilotId" placeholder="Pilot ID">
+    <input type="password" id="accessCode" placeholder="Access Code">
+
+    <!-- FAKE ROLE SELECTOR -->
+    <select id="role">
+        <option value="pilot">Pilot</option>
+        <option value="admin">Admin</option>
+        <option value="superadmin">Super Admin</option>
+    </select>
 
     <button onclick="login()">DEPLOY ACCESS</button>
 </div>
 
 <script>
 function login(){
-    alert("Access Granted. Welcome Pilot.");
-    window.location.href = "index.html"; // back to store
+    const role = document.getElementById("role").value;
+
+    alert("Access Granted. Role: " + role.toUpperCase());
+
+    if(role === "pilot"){
+        window.location.href = "index.html";
+    }
+    else if(role === "admin"){
+        window.location.href = "admin.html"; // create later
+    }
+    else if(role === "superadmin"){
+        window.location.href = "superadmin.html"; // create later
+    }
 }
 </script>
 
