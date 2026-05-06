@@ -5,13 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tito-Hobs | Gunpla Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-
 <link rel="icon" type="image/png" href="ChatGPT Image May 1, 2026, 08_51_21 PM.png">
 
 <style>
 
 /* RESET */
+/* 🔴 CUSTOM FONT LOAD */
+@font-face {
+    font-family: 'Outerion-Regular';
+    src: url('Outerion-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* HEADINGS + TILES GLOW EFFECT */
+h1, h2, .tile {
+    text-shadow: 0 0 10px red;
+}
 * {
     margin: 0;
     padding: 0;
@@ -20,10 +30,10 @@
 }
 
 body {
-    background: radial-gradient(circle at top, #0f0f1a, #000);
-    color: #fff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
-
 /* PAGE */
 .page {
     display: flex;
