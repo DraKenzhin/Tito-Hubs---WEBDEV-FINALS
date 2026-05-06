@@ -146,6 +146,15 @@ button:hover {
 </div>
 
 <script>
+const role = localStorage.getItem("role");
+const pilotId = localStorage.getItem("pilotId");
+
+// allow BOTH admin and superadmin
+if(role !== "admin" && role !== "superadmin"){
+    alert("ACCESS DENIED: ADMIN ONLY");
+    window.location.href = "index.html";
+}
+    
 console.log("SUPER ADMIN CORE LOADED");
 
 // OPTIONAL ROLE CHECK (kept simple)
