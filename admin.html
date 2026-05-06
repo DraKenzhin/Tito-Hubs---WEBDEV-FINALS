@@ -146,133 +146,127 @@ button:hover {
 </div>
 
 <script>
-const role = localStorage.getItem("role");
-const pilotId = localStorage.getItem("pilotId");
+document.addEventListener("DOMContentLoaded", function () {
 
-// allow BOTH admin and superadmin
-if(role !== "admin" && role !== "superadmin"){
-    alert("ACCESS DENIED: ADMIN ONLY");
-    window.location.href = "index.html";
-}
-    
-console.log("SUPER ADMIN CORE LOADED");
+    console.log("ADMIN CORE LOADED");
 
-// OPTIONAL ROLE CHECK (kept simple)
-const role = localStorage.getItem("role");
-const pilotId = localStorage.getItem("pilotId");
+    // ---------------- SECURITY ----------------
+    const role = localStorage.getItem("role");
+    const pilotId = localStorage.getItem("pilotId");
 
-if(role && role !== "superadmin"){
-    alert("ACCESS DENIED");
-    window.location.href = "index.html";
-}
-
-// ---------------- DATA ----------------
-let products = JSON.parse(localStorage.getItem("products")) || [];
-renderProducts();
-
-function save(){
-    localStorage.setItem("products", JSON.stringify(products));
-}
-
-// ---------------- ADD PRODUCT ----------------
-function addProduct(){
-
-    const name = document.getElementById("name").value.trim();
-    const brand = document.getElementById("brand").value;
-    const grade = document.getElementById("grade").value;
-    const price = Number(document.getElementById("price").value);
-    const file = document.getElementById("image").files[0];
-
-    if(!name || !price || !file){
-        alert("Missing product data!");
+    if(role !== "admin" && role !== "superadmin"){
+        alert("ACCESS DENIED: ADMIN ONLY");
+        window.location.href = "index.html";
         return;
     }
 
-    const reader = new FileReader();
+    document.getElementById("userInfo").innerText =
+        `Logged in as: ${pilotId} | ROLE: ${role.toUpperCase()}`;
 
-    reader.onload = function(e){
+    // ---------------- DATA ----------------
+    let products = JSON.parse(localStorage.getItem("products")) || [];
 
-        products.push({
-            id: Date.now(),
-            name,
-            brand,
-            grade,
-            price,
-            image: e.target.result,
-            published: false
-        });
+    function save(){
+        localStorage.setItem("products", JSON.stringify(products));
+    }
 
+    // ---------------- ADD PRODUCT ----------------
+    function addProduct(){
+
+        const name = document.getElementById("name").value.trim();
+        const brand = document.getElementById("brand").value;
+        const grade = document.getElementById("grade").value;
+        const price = Number(document.getElementById("price").value);
+        const file = document.getElementById("image").files[0];
+
+        if(!name || !price || !file){
+            alert("Missing product data!");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+
+            products.push({
+                id: Date.now(),
+                name,
+                brand,
+                grade,
+                price,
+                image: e.target.result,
+                published: false
+            });
+
+            save();
+            renderProducts();
+
+            alert("✔ PRODUCT DEPLOYED SUCCESSFULLY");
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    // ---------------- DELETE ----------------
+    function deleteProduct(id){
+        products = products.filter(p => p.id !== id);
+        save();
+        renderProducts();
+    }
+
+    // ---------------- SEND TO STORE ----------------
+    function sendToStore(id){
+
+        const product = products.find(p => p.id === id);
+        if(!product) return;
+
+        product.published = true;
         save();
         renderProducts();
 
-        alert("✔ PRODUCT DEPLOYED SUCCESSFULLY");
-    };
+        alert("🚀 DEPLOYED TO STORE");
+    }
 
-    reader.readAsDataURL(file);
-}
+    // ---------------- OPEN STORE ----------------
+    function openStore(){
+        window.location.href = "index.html";
+    }
 
-// ---------------- DELETE ----------------
-function deleteProduct(id){
-    products = products.filter(p => p.id !== id);
-    save();
+    // ---------------- RENDER ----------------
+    function renderProducts(){
+
+        const list = document.getElementById("productList");
+        list.innerHTML = "";
+
+        products.forEach(p => {
+
+            list.innerHTML += `
+            <div class="product-card">
+                <img src="${p.image}">
+                <h4>${p.name}</h4>
+                <p>${p.brand} | ${p.grade}</p>
+                <p>₱${p.price}</p>
+                <p>${p.published ? "DEPLOYED" : "DRAFT"}</p>
+
+                <button onclick="sendToStore(${p.id})">
+                    ${p.published ? "RE-DEPLOY" : "SEND TO STORE"}
+                </button>
+
+                <button class="delete-btn" onclick="deleteProduct(${p.id})">
+                    DELETE
+                </button>
+            </div>
+            `;
+        });
+    }
+
+    // ---------------- BUTTON FIX (IMPORTANT) ----------------
+    document.getElementById("deployBtn").addEventListener("click", addProduct);
+    document.getElementById("storeBtn").addEventListener("click", openStore);
+
+    // INITIAL LOAD
     renderProducts();
-}
 
-// ---------------- SEND TO STORE ----------------
-function sendToStore(id){
-
-    const product = products.find(p => p.id === id);
-    if(!product) return;
-
-    product.published = true;
-    save();
-    renderProducts();
-
-    alert("🚀 DEPLOYED TO STORE");
-}
-
-// ---------------- OPEN STORE ----------------
-function openStore(){
-    window.location.href = "index.html";
-}
-
-// ---------------- RENDER ----------------
-function renderProducts(){
-
-    const list = document.getElementById("productList");
-    list.innerHTML = "";
-
-    products.forEach(p => {
-
-        list.innerHTML += `
-        <div class="product-card">
-            <img src="${p.image}">
-            <h4>${p.name}</h4>
-            <p>${p.brand} | ${p.grade}</p>
-            <p>₱${p.price}</p>
-            <p>${p.published ? "DEPLOYED" : "DRAFT"}</p>
-
-            <button onclick="sendToStore(${p.id})">
-                ${p.published ? "RE-DEPLOY" : "SEND TO STORE"}
-            </button>
-
-            <button class="delete-btn" onclick="deleteProduct(${p.id})">
-                DELETE
-            </button>
-        </div>
-        `;
-    });
-}
-// OPEN STORE FIX
-document.getElementById("storeBtn").addEventListener("click", function () {
-    console.log("OPEN STORE CLICKED");
-    window.location.href = "index.html";
-});
-
-// DEPLOY FIX
-document.getElementById("deployBtn").addEventListener("click", function () {
-    console.log("DEPLOY CLICKED");
-    addProduct(); // calls your existing function
 });
 </script>
 </body>
