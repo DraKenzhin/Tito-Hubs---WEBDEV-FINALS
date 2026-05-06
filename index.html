@@ -1,3 +1,13 @@
+<script>
+const role = localStorage.getItem("role");
+
+// optional: block admin pages from store
+if(role === "superadmin" || role === "admin"){
+    // allow them to still view store OR remove this block if you want
+    console.log("Admin viewing store mode");
+}
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
