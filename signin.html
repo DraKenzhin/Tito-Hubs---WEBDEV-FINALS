@@ -100,6 +100,27 @@ function login(){
         window.location.href = "superadmin.html";
     }
 }
+
+function login(){
+    const role = document.getElementById("role").value;
+    const pilotId = document.getElementById("pilotId").value;
+
+    localStorage.setItem("role", role);
+    localStorage.setItem("pilotId", pilotId);
+
+    alert("Access Granted: " + role.toUpperCase());
+
+    if(role === "pilot"){
+        window.location.href = "index.html"; // store
+    }
+    else if(role === "admin"){
+        window.location.href = "admin.html";
+    }
+    else if(role === "superadmin"){
+        window.location.href = "superadmin.html"; // MUST NOT be index.html
+    }
+}
+    
 </script>
 
 </body>
