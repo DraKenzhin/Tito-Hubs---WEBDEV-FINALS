@@ -155,6 +155,7 @@ button:hover {
 </div>
 
 <script>
+<script>
 // SECURITY CHECK
 const role = localStorage.getItem("role");
 const pilotId = localStorage.getItem("pilotId");
@@ -171,16 +172,33 @@ document.getElementById("userInfo").innerText =
 let products = JSON.parse(localStorage.getItem("products")) || [];
 renderProducts();
 
-// ADD PRODUCT
+// ADD PRODUCT (FIXED)
 function addProduct(){
-    const name = document.getElementById("name").value;
+
+    const name = document.getElementById("name").value.trim();
     const brand = document.getElementById("brand").value;
     const grade = document.getElementById("grade").value;
-    const price = document.getElementById("price").value;
+    const priceInput = document.getElementById("price").value;
     const file = document.getElementById("image").files[0];
 
-    if(!name || !price || !file){
-        alert("Missing data!");
+    // FORCE NUMBER PRICE
+    const price = Number(priceInput);
+
+    console.log("DEBUG:", { name, brand, grade, price, file });
+
+    // VALIDATION FIXED
+    if(!name){
+        alert("Product name missing!");
+        return;
+    }
+
+    if(!price || price <= 0){
+        alert("Invalid price!");
+        return;
+    }
+
+    if(!file){
+        alert("No image selected!");
         return;
     }
 
@@ -199,7 +217,18 @@ function addProduct(){
         products.push(product);
         localStorage.setItem("products", JSON.stringify(products));
 
+        console.log("PRODUCT SAVED:", product);
+
         renderProducts();
+
+        // clear inputs
+        document.getElementById("name").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("image").value = "";
+    };
+
+    reader.onerror = function(){
+        alert("Image failed to load!");
     };
 
     reader.readAsDataURL(file);
@@ -251,6 +280,7 @@ function renderProducts(){
         `;
     });
 }
+</script>
 </script>
 
 </body>
