@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ADMIN CORE</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: radial-gradient(circle at top, #1a0000, #000);
+    font-family: 'Orbitron', sans-serif;
+    color: #ff2e2e;
+    overflow-x: hidden;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ff2e2e;
+    box-shadow: 0 0 20px #ff2e2e;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    min-height: calc(100vh - 90px);
+    box-sizing: border-box;
+}
+
+.panel, .products {
+    flex: 1;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid #ff2e2e;
+    padding: 15px;
+    box-shadow: 0 0 10px #ff2e2e;
+    box-sizing: border-box;
+}
+
+input, select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #111;
+    border: 1px solid #ff2e2e;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    box-sizing: border-box;
+}
+
+button {
+    background: #ff2e2e;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #ff0000;
+}
+
+.store-btn {
+    background: #000;
+    border: 1px solid #ff2e2e;
+    color: #ff2e2e;
+}
+
+.store-btn:hover {
+    background: #ff2e2e;
+    color: #000;
+}
+
+.product-card {
+    border: 1px solid #ff2e2e;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.product-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.delete-btn {
+    background: #000;
+    border: 1px solid #ff2e2e;
+    color: #ff2e2e;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>SUPER ADMIN CORE</h1>
+    <p id="userInfo"></p>
+</div>
+
+<div class="container">
+
+<!-- PRODUCT PANEL -->
+<div class="panel">
+    <h3>UPLOAD PRODUCT</h3>
+
+    <input type="text" id="name" placeholder="Product Name">
+
+    <select id="brand">
+        <option value="Bandai">Bandai</option>
+        <option value="Yolopark">Yolopark</option>
+        <option value="Blokees">Blokees</option>
+    </select>
+
+    <select id="grade">
+        <option value="None">No Grade</option>
+        <option value="SD">SD</option>
+        <option value="HG">HG</option>
+        <option value="RG">RG</option>
+        <option value="MG">MG</option>
+        <option value="PG">PG</option>
+    </select>
+
+    <input type="text" id="price" placeholder="Price (₱)" inputmode="numeric">
+
+    <input type="file" id="image" accept="image/*">
+
+    <button onclick="addProduct()">DEPLOY PRODUCT</button>
+    <button class="store-btn" onclick="openStore()">OPEN STORE</button>
+</div>
+
+<!-- PRODUCT DATABASE -->
+<div class="products">
+    <h3>PRODUCT DATABASE</h3>
+    <div id="productList"></div>
+</div>
+
+</div>
+
+<script>
+console.log("SUPER ADMIN CORE LOADED");
+
+// OPTIONAL ROLE CHECK (kept simple)
+const role = localStorage.getItem("role");
+const pilotId = localStorage.getItem("pilotId");
+
+if(role && role !== "superadmin"){
+    alert("ACCESS DENIED");
+    window.location.href = "index.html";
+}
+
+// ---------------- DATA ----------------
+let products = JSON.parse(localStorage.getItem("products")) || [];
+renderProducts();
+
+function save(){
+    localStorage.setItem("products", JSON.stringify(products));
+}
+
+// ---------------- ADD PRODUCT ----------------
+function addProduct(){
+
+    const name = document.getElementById("name").value.trim();
+    const brand = document.getElementById("brand").value;
+    const grade = document.getElementById("grade").value;
+    const price = Number(document.getElementById("price").value);
+    const file = document.getElementById("image").files[0];
+
+    if(!name || !price || !file){
+        alert("Missing product data!");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        products.push({
+            id: Date.now(),
+            name,
+            brand,
+            grade,
+            price,
+            image: e.target.result,
+            published: false
+        });
+
+        save();
+        renderProducts();
+
+        alert("✔ PRODUCT DEPLOYED SUCCESSFULLY");
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// ---------------- DELETE ----------------
+function deleteProduct(id){
+    products = products.filter(p => p.id !== id);
+    save();
+    renderProducts();
+}
+
+// ---------------- SEND TO STORE ----------------
+function sendToStore(id){
+
+    const product = products.find(p => p.id === id);
+    if(!product) return;
+
+    product.published = true;
+    save();
+    renderProducts();
+
+    alert("🚀 DEPLOYED TO STORE");
+}
+
+// ---------------- OPEN STORE ----------------
+function openStore(){
+    window.location.href = "index.html";
+}
+
+// ---------------- RENDER ----------------
+function renderProducts(){
+
+    const list = document.getElementById("productList");
+    list.innerHTML = "";
+
+    products.forEach(p => {
+
+        list.innerHTML += `
+        <div class="product-card">
+            <img src="${p.image}">
+            <h4>${p.name}</h4>
+            <p>${p.brand} | ${p.grade}</p>
+            <p>₱${p.price}</p>
+            <p>${p.published ? "DEPLOYED" : "DRAFT"}</p>
+
+            <button onclick="sendToStore(${p.id})">
+                ${p.published ? "RE-DEPLOY" : "SEND TO STORE"}
+            </button>
+
+            <button class="delete-btn" onclick="deleteProduct(${p.id})">
+                DELETE
+            </button>
+        </div>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>
