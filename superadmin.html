@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-/* GLOBAL RESET (fixes white gaps) */
 html, body {
     margin: 0;
     padding: 0;
@@ -28,7 +27,7 @@ html, body {
     box-shadow: 0 0 20px #ff2e2e;
 }
 
-/* FULL HEIGHT WRAPPER FIX */
+/* LAYOUT */
 .container {
     display: flex;
     gap: 20px;
@@ -67,10 +66,23 @@ button {
     width: 100%;
     cursor: pointer;
     font-weight: bold;
+    margin-top: 5px;
 }
 
 button:hover {
     background: #ff0000;
+}
+
+/* STORE BUTTON */
+.store-btn {
+    background: #000;
+    border: 1px solid #ff2e2e;
+    color: #ff2e2e;
+}
+
+.store-btn:hover {
+    background: #ff2e2e;
+    color: #000;
 }
 
 /* PRODUCT CARD */
@@ -87,16 +99,9 @@ button:hover {
 }
 
 .delete-btn {
-    margin-top: 10px;
     background: #000;
     border: 1px solid #ff2e2e;
     color: #ff2e2e;
-    cursor: pointer;
-}
-
-.delete-btn:hover {
-    background: #ff2e2e;
-    color: #000;
 }
 </style>
 </head>
@@ -110,30 +115,42 @@ button:hover {
 
 <div class="container">
 
-    <!-- UPLOAD PANEL -->
-    <div class="panel">
-        <h3>UPLOAD PRODUCT</h3>
+<!-- UPLOAD PANEL -->
+<div class="panel">
+    <h3>UPLOAD PRODUCT</h3>
 
-        <input type="text" id="name" placeholder="Product Name">
+    <input type="text" id="name" placeholder="Product Name">
 
-        <select id="grade">
-            <option value="SD">SD (Super Deformed)</option>
-            <option value="HG">HG (High Grade)</option>
-            <option value="RG">RG (Real Grade)</option>
-            <option value="MG">MG (Master Grade)</option>
-            <option value="PG">PG (Perfect Grade)</option>
-        </select>
+    <select id="brand">
+        <option value="Bandai">Bandai</option>
+        <option value="Yolopark">Yolopark</option>
+        <option value="Blokees">Blokees</option>
+    </select>
 
-        <input type="file" id="image" accept="image/*">
+    <select id="grade">
+        <option value="None">No Grade</option>
+        <option value="SD">SD</option>
+        <option value="HG">HG</option>
+        <option value="RG">RG</option>
+        <option value="MG">MG</option>
+        <option value="PG">PG</option>
+    </select>
 
-        <button onclick="addProduct()">DEPLOY PRODUCT</button>
-    </div>
+    <input type="number" id="price" placeholder="Price (₱)">
 
-    <!-- PRODUCT DATABASE -->
-    <div class="products">
-        <h3>PRODUCT DATABASE</h3>
-        <div id="productList"></div>
-    </div>
+    <input type="file" id="image" accept="image/*">
+
+    <button onclick="addProduct()">DEPLOY PRODUCT</button>
+
+    <!-- OPEN STORE -->
+    <button class="store-btn" onclick="openStore()">OPEN STORE</button>
+</div>
+
+<!-- PRODUCT DATABASE -->
+<div class="products">
+    <h3>PRODUCT DATABASE</h3>
+    <div id="productList"></div>
+</div>
 
 </div>
 
@@ -157,10 +174,12 @@ renderProducts();
 // ADD PRODUCT
 function addProduct(){
     const name = document.getElementById("name").value;
+    const brand = document.getElementById("brand").value;
     const grade = document.getElementById("grade").value;
+    const price = document.getElementById("price").value;
     const file = document.getElementById("image").files[0];
 
-    if(!name || !file){
+    if(!name || !price || !file){
         alert("Missing data!");
         return;
     }
@@ -169,9 +188,12 @@ function addProduct(){
 
     reader.onload = function(e){
         const product = {
-            name: name,
-            grade: grade,
-            image: e.target.result
+            name,
+            brand,
+            grade,
+            price,
+            image: e.target.result,
+            published: false
         };
 
         products.push(product);
@@ -190,6 +212,19 @@ function deleteProduct(index){
     renderProducts();
 }
 
+// SEND TO STORE
+function sendToStore(index){
+    products[index].published = true;
+    localStorage.setItem("products", JSON.stringify(products));
+    alert("Sent to Store!");
+    renderProducts();
+}
+
+// OPEN STORE
+function openStore(){
+    window.location.href = "index.html";
+}
+
 // RENDER PRODUCTS
 function renderProducts(){
     const list = document.getElementById("productList");
@@ -197,15 +232,22 @@ function renderProducts(){
 
     products.forEach((p, index) => {
         list.innerHTML += `
-            <div class="product-card">
-                <img src="${p.image}">
-                <h4>${p.name}</h4>
-                <p>GRADE: ${p.grade}</p>
+        <div class="product-card">
+            <img src="${p.image}">
+            <h4>${p.name}</h4>
+            <p>Brand: ${p.brand}</p>
+            <p>Grade: ${p.grade}</p>
+            <p>Price: ₱${p.price}</p>
+            <p>Status: ${p.published ? "IN STORE" : "DRAFT"}</p>
 
-                <button class="delete-btn" onclick="deleteProduct(${index})">
-                    DELETE
-                </button>
-            </div>
+            <button onclick="sendToStore(${index})">
+                SEND TO STORE
+            </button>
+
+            <button class="delete-btn" onclick="deleteProduct(${index})">
+                DELETE
+            </button>
+        </div>
         `;
     });
 }
